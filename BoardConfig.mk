@@ -20,7 +20,7 @@
 # definition file).
 #
 
-TARGET_OTA_ASSERT_DEVICE := mint
+TARGET_OTA_ASSERT_DEVICE := kyletdcmcc
 
 # Architecture
 TARGET_ARCH := arm
@@ -74,15 +74,15 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 1946804224
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 # Recovery
-BOARD_LDPI_RECOVERY := true
-BOARD_HAS_NO_SELECT_BUTTON := true
-BOARD_USE_CUSTOM_RECOVERY_FONT := "<font_7x16.h>"
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/mint/recovery/recovery_keys.c
-TARGET_RECOVERY_INITRC := device/samsung/mint/recovery/recovery.rc
-BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/mint/recovery/graphics.c
-BOARD_HAS_NO_MISC_PARTITION := true
-TARGET_RECOVERY_FSTAB := device/samsung/mint/recovery.fstab
-BOARD_SUPPRESS_EMMC_WIPE := true
+#BOARD_LDPI_RECOVERY := true
+#BOARD_HAS_NO_SELECT_BUTTON := true
+#BOARD_USE_CUSTOM_RECOVERY_FONT := "<font_7x16.h>"
+#BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/mint/recovery/recovery_keys.c
+#TARGET_RECOVERY_INITRC := device/samsung/mint/recovery/recovery.rc
+#BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/mint/recovery/graphics.c
+#BOARD_HAS_NO_MISC_PARTITION := true
+#TARGET_RECOVERY_FSTAB := device/samsung/mint/recovery.fstab
+#BOARD_SUPPRESS_EMMC_WIPE := true
 
 # UMS
 BOARD_UMS_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun/file"

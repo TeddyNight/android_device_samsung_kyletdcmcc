@@ -22,5 +22,5 @@ $(call inherit-product, device/samsung/mint/device.mk)
 PRODUCT_NAME := full_mint
 PRODUCT_DEVICE := mint
 PRODUCT_BRAND := samsung
-PRODUCT_MODEL := GT-S5282
+PRODUCT_MODEL := GT-S7568
 PRODUCT_MANUFACTURER := Samsung

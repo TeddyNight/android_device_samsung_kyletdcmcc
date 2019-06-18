@@ -1,4 +1,4 @@
-# Samsung Galaxy Star
+# Samsung Galaxy S7568
 
 
 
@@ -6,18 +6,13 @@ Device Tree for Samsung Galaxy Star
 Thanks - Unjustified Dev & Doc
 
 
-![Samsung Galaxy Star](http://drop.ndtv.com/TECH/product_database/images/530201361033AM_635_samsung_galaxy_star.png)
+![Samsung Galaxy Star](http://i3.hexunimg.cn/2013-03-18/152200816.jpg)
 
 
 ###Specifications
 
-**Release Date** - 1 May 2013
 
-**Weight** - 100 grams
-
-**Screen Size** - 3"
-
-**Screen Resolution** - 240 x 320 (LDPI)
+**Screen Resolution** - 480*800 
 
 **Battery Capacilty** - 1200mAh
 
@@ -27,4 +22,4 @@ Thanks - Unjustified Dev & Doc
 
 **Internal Memory** - 4GB total
 
-**RAM** - 512MB
+**RAM** - 768MB

@@ -25,7 +25,10 @@ jhwan.kim@hdlnc.com  -->
 <!-- Common -->
 <CscFeature_Common_MyPhonebookBrandName></CscFeature_Common_MyPhonebookBrandName>
 <CscFeature_Common_EnableMobileOfficeMdm>false</CscFeature_Common_EnableMobileOfficeMdm>
-
+<CscFeature_Common_AddPrefix4InternationalCall></CscFeature_Common_AddPrefix4InternationalCall>
+<CscFeature_Common_AllowExternalApkUsage>false</CscFeature_Common_AllowExternalApkUsage>
+<CscFeature_Common_EnableHDVoiceDuring3GConnection>false</CscFeature_Common_EnableHDVoiceDuring3GConnection>
+ 
 <!-- SyncML -->
 <CscFeature_SyncML_MyPhonebookISD></CscFeature_SyncML_MyPhonebookISD>
 <CscFeature_SyncML_EnableLimitationDeltaSizeViaMobileNet>-1</CscFeature_SyncML_EnableLimitationDeltaSizeViaMobileNet>
@@ -36,6 +39,7 @@ jhwan.kim@hdlnc.com  -->
 <CscFeature_Camera_DefaultSideMenu>selfcamera,flashmode,shootingmode,effect</CscFeature_Camera_DefaultSideMenu>
 <CscFeature_Camera_CamcorderDefaultSideMenu>selfcamcorder,recordingmode,flashmode,effect</CscFeature_Camera_CamcorderDefaultSideMenu>
 <CscFeature_Camera_CameraFlicker>50hz</CscFeature_Camera_CameraFlicker>
+<CscFeature_Camera_UseShareShotFolderAs>false</CscFeature_Camera_UseShareShotFolderAs>
 
 <!-- Message -->
 
@@ -124,6 +128,7 @@ jhwan.kim@hdlnc.com  -->
 <!-- New Calendar -->
 <CscFeature_Calendar_EnableLocalHolidayDisplay>NONE</CscFeature_Calendar_EnableLocalHolidayDisplay>
 <CscFeature_Calendar_SetColorOfDays>XXXXXXR</CscFeature_Calendar_SetColorOfDays>
+<CscFeature_Calender_EnableWeatherInfo>false</CscFeature_Calender_EnableWeatherInfo>
 
 <!-- Call -->
 <CscFeature_VoiceCall_EnableSSC>false</CscFeature_VoiceCall_EnableSSC>
@@ -136,6 +141,10 @@ jhwan.kim@hdlnc.com  -->
 <!-- Calculator -->
 
 <!-- Clock -->
+<CscFeature_Clock_EnableAlarmSnoozeDefault>true</CscFeature_Clock_EnableAlarmSnoozeDefault>
+<CscFeature_Clock_EnableAlarmVolumeSpr>true</CscFeature_Clock_EnableAlarmVolumeSpr>
+<CscFeature_Clock_EnableAlarmRepeatTypeWeeklySpr>true</CscFeature_Clock_EnableAlarmRepeatTypeWeeklySpr>
+<CscFeature_Clock_DisableServProvider>NONE</CscFeature_Clock_DisableServProvider>
 
 <!-- Mini Diary -->
 <CscFeature_MiniDiary_DisableChinaSns>true</CscFeature_MiniDiary_DisableChinaSns>
@@ -150,6 +159,9 @@ jhwan.kim@hdlnc.com  -->
 <CscFeature_RIL_DisablePromptPopup4SIMProfileSelection>false</CscFeature_RIL_DisablePromptPopup4SIMProfileSelection>
 <CscFeature_RIL_PDPRetryMechanism4>NONE</CscFeature_RIL_PDPRetryMechanism4>
 <CscFeature_RIL_Enable2DigitCall>true</CscFeature_RIL_Enable2DigitCall>
+<CscFeature_RIL_EnableRoamingIcon4NationalRoaming>false</CscFeature_RIL_EnableRoamingIcon4NationalRoaming>
+<CscFeature_RIL_ControlFakeRoamingNRP2G>false</CscFeature_RIL_ControlFakeRoamingNRP2G>
+<CscFeature_RIL_BlockUsingRoamingProtocol>false</CscFeature_RIL_BlockUsingRoamingProtocol>
 
 <!-- Settings -->
 <CscFeature_Settings_FindMyMobile>true</CscFeature_Settings_FindMyMobile>
@@ -166,7 +178,7 @@ jhwan.kim@hdlnc.com  -->
 <CscFeature_Music_DisableFindTag>false</CscFeature_Music_DisableFindTag>
 <CscFeature_Music_SupportChinaMusicHub>false</CscFeature_Music_SupportChinaMusicHub>
 <CscFeature_Music_TranslateUnknownTitle>false</CscFeature_Music_TranslateUnknownTitle>
-
+<CscFeature_Music_DisableSelectableMusichubLink>false</CscFeature_Music_DisableSelectableMusichubLink>
 
 <!-- VoiceRecorder -->
 
@@ -187,6 +199,8 @@ jhwan.kim@hdlnc.com  -->
 <CscFeature_Framework_HyperLinkDigit>5</CscFeature_Framework_HyperLinkDigit>
 <CscFeature_Framework_ReplaceDataTypeIconAsOpBrand>OPEN</CscFeature_Framework_ReplaceDataTypeIconAsOpBrand>
 <CscFeature_Framework_EnableScrCaptureSoundOnlyInCamera>false</CscFeature_Framework_EnableScrCaptureSoundOnlyInCamera>
+<CscFeature_Framework_DisableForceClosePopup>false</CscFeature_Framework_DisableForceClosePopup>
+<CscFeature_Framework_AddProductRoField></CscFeature_Framework_AddProductRoField>
 
 <!-- Email -->
 <CscFeature_Email_DefaultSyncInterval>15</CscFeature_Email_DefaultSyncInterval>
@@ -235,8 +249,9 @@ jhwan.kim@hdlnc.com  -->
 
 <!-- Voice Talk -->
 
-<!-- SIP -->
-<CscFeature_Sip_DefCharCnt4WordCompletion>2</CscFeature_Sip_DefCharCnt4WordCompletion>
+<!-- SPenGesturePad -->
+<CscFeature_SPenGesturePad_UseSearchEngine>false</CscFeature_SPenGesturePad_UseSearchEngine>
+
 
 </FeatureSet>
 </SamsungMobileFeature>

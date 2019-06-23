@@ -12,15 +12,6 @@ PRODUCT_AAPT_PREF_CONFIG := hdpi
 
 LOCAL_PATH := device/samsung/kyletdcmcc
 
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := $(LOCAL_PATH)/kernel
-else
-	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
-
 $(call inherit-product, build/target/product/full.mk)
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=8
@@ -56,7 +47,6 @@ PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
     SamsungServiceMode \
     CMAccount \
-    Torch
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -75,7 +65,7 @@ PRODUCT_PACKAGES += \
     VisualizationWallpapers \
     librs_jni
 
-#$(call inherit-product, device/samsung/kyletdcmcc/opensource/libasound/alsa-lib-products.mk)
+$(call inherit-product, device/samsung/kyletdcmcc/opensource/libasound/alsa-lib-products.mk)
 
 
 ## Rootdir
@@ -83,16 +73,21 @@ PRODUCT_COPY_FILES += \
     device/samsung/kyletdcmcc/boot/init.sp8810.rc:root/init.sp8810.rc \
     device/samsung/kyletdcmcc/boot/init.sp8810.usb.rc:root/init.sp8810.usb.rc \
     device/samsung/kyletdcmcc/boot/ueventd.sp8810.rc:root/ueventd.sp8810.rc \
+    device/samsung/kyletdcmcc/boot/bin/charge:root/bin/charge \
+#    device/samsung/kyletdcmcc/boot/bin/rawdatad:root/bin/rawdatad \
+    device/samsung/kyletdcmcc/boot/bin/vcharged:root/bin/vcharged \
+    device/samsung/kyletdcmcc/boot/init.usb.rc:root/init.usb.rc \
+    device/samsung/kyletdcmcc/boot/init.bt.rc:root/init.bt.rc \
+    device/samsung/kyletdcmcc/boot/init.trace.rc:root/init.trace.rc \
+    device/samsung/kyletdcmcc/boot/fstab.sp8810:root/fstab.sp8810 \
+    device/samsung/kyletdcmcc/boot/modem_control:root/modem_control \
     device/samsung/kyletdcmcc/boot/lpm.rc:root/lpm.rc
 
 # prebuilt kernel modules
 MOD_TGT := /system/lib/modules
 MOD_SRC := $(LOCAL_PATH)/prebuilts/lib/modules
 PRODUCT_COPY_FILES += \
-	$(MOD_SRC)/dhd.ko:$(MOD_TGT)/dhd.ko \
-	$(MOD_SRC)/j4fs.ko:$(MOD_TGT)/j4fs.ko \
 	$(MOD_SRC)/mali.ko:$(MOD_TGT)/mali.ko \
-	$(MOD_SRC)/modules.dep.bb:$(MOD_TGT)/modules.dep.bb \
 	$(MOD_SRC)/ump.ko:$(MOD_TGT)/ump.ko
 
 # Prebuild OMX (Why? Maybe I need.)
@@ -130,24 +125,24 @@ PRODUCT_COPY_FILES += \
 $(LOCAL_PATH)/prebuilts/etc/dbus.conf:system/etc/dbus.conf 
 
 # Audio libraries
-#PRODUCT_COPY_FILES += \
-#$(LOCAL_PATH)/prebuilts/lib/libaudiopolicy_sec.so:system/lib/libaudiopolicy_sec.so \
-#$(LOCAL_PATH)/prebuilts/lib/libsamsungSoundbooster.so:system/lib/libsamsungSoundbooster.so \
-#$(LOCAL_PATH)/prebuilts/lib/lib_SamsungRec_V01005.so:system/lib/lib_SamsungRec_V01005.so \
-#$(LOCAL_PATH)/prebuilts/lib/lib_Samsung_SB_AM_for_ICS_v03005.so:system/lib/lib_Samsung_SB_AM_for_ICS_v03005.so \
-#$(LOCAL_PATH)/prebuilts/lib/libsamsungRecord.so:system/lib/libsamsungRecord.so \
-#$(LOCAL_PATH)/prebuilts/lib/hw/audio_policy.sc8810.so:system/lib/hw/audio_policy.sc8810.so \
-#$(LOCAL_PATH)/prebuilts/lib/hw/audio.primary.sc8810.so:system/lib/hw/audio.primary.sc8810.so \
-#$(LOCAL_PATH)/prebuilts/lib/libcontrolcsc.so:system/lib/libcontrolcsc.so \
-#$(LOCAL_PATH)/prebuilts/lib/libvolumemanager.so:system/lib/libvolumemanager.so \
-#$(LOCAL_PATH)/prebuilts/lib/libvolumemanager_jni.so:system/lib/libvolumemanager_jni.so \
-#$(LOCAL_PATH)/prebuilts/lib/libvolumeprofilesystem.so:system/lib/libvolumeprofilesystem.so
+PRODUCT_COPY_FILES += \
+$(LOCAL_PATH)/prebuilts/lib/libaudiopolicy_sec.so:system/lib/libaudiopolicy_sec.so \
+$(LOCAL_PATH)/prebuilts/lib/libsamsungSoundbooster.so:system/lib/libsamsungSoundbooster.so \
+$(LOCAL_PATH)/prebuilts/lib/lib_SamsungRec_V01006.so:system/lib/lib_SamsungRec_V01006.so \
+$(LOCAL_PATH)/prebuilts/lib/lib_Samsung_SB_AM_for_ICS_v03008.so:system/lib/lib_Samsung_SB_AM_for_ICS_v03008.so \
+$(LOCAL_PATH)/prebuilts/lib/libsamsungRecord.so:system/lib/libsamsungRecord.so \
+$(LOCAL_PATH)/prebuilts/lib/hw/audio_policy.sc8810.so:system/lib/hw/audio_policy.sc8810.so \
+$(LOCAL_PATH)/prebuilts/lib/hw/audio.primary.sc8810.so:system/lib/hw/audio.primary.sc8810.so \
+$(LOCAL_PATH)/prebuilts/lib/libcontrolcsc.so:system/lib/libcontrolcsc.so \
+$(LOCAL_PATH)/prebuilts/lib/libvolumemanager.so:system/lib/libvolumemanager.so \
+$(LOCAL_PATH)/prebuilts/lib/libvolumemanager_jni.so:system/lib/libvolumemanager_jni.so \
+$(LOCAL_PATH)/prebuilts/lib/libvolumeprofilesystem.so:system/lib/libvolumeprofilesystem.so
 
 
 # Audio configs
-#PRODUCT_COPY_FILES += \
+PRODUCT_COPY_FILES += \
 #$(LOCAL_PATH)/prebuilts/etc/asound.conf:system/etc/asound.conf \
-#$(LOCAL_PATH)/prebuilts/etc/audio_effects.conf:system/etc/audio_effects.conf
+$(LOCAL_PATH)/prebuilts/etc/audio_effects.conf:system/etc/audio_effects.conf
 
 ## PreBuild Hal (Only Test)
 HW_TGT := /system/lib/hw
@@ -211,6 +206,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilts/lib/libsec-ril.so:system/lib/libsec-ril.so \
     $(LOCAL_PATH)/prebuilts/lib/libsecril-client.so:system/lib/libsecril-client.so \
+    $(LOCAL_PATH)/prebuilts/lib/libsecnativefeature.so:system/lib/libsecnativefeature.so \
     $(LOCAL_PATH)/prebuilts/bin/rild:system/bin/rild
 #    $(LOCAL_PATH)/prebuilts/lib/libril.so:system/lib/libril.so \
 
@@ -220,7 +216,7 @@ PRODUCT_COPY_FILES += \
     device/samsung/kyletdcmcc/prebuilts/etc/wifi/bcmdhd_apsta.bin:system/etc/wifi/bcmdhd_apsta.bin \
     device/samsung/kyletdcmcc/prebuilts/etc/wifi/bcmdhd_mfg.bin:system/etc/wifi/bcmdhd_mfg.bin \
     device/samsung/kyletdcmcc/prebuilts/etc/wifi/bcmdhd_p2p.bin:system/etc/wifi/bcmdhd_p2p.bin \
-    device/samsung/kyletdcmcc/prebuilts/etc/wifi/bcmdhd_sta.bin:etc/wifi/bcmdhd_sta.bin \
+    device/samsung/kyletdcmcc/prebuilts/etc/wifi/bcmdhd_sta.bin:system/etc/wifi/bcmdhd_sta.bin \
     device/samsung/kyletdcmcc/prebuilts/etc/wifi/nvram_mfg.txt:system/etc/wifi/nvram_mfg.txt \
     device/samsung/kyletdcmcc/prebuilts/etc/wifi/nvram_net.txt:system/etc/wifi/nvram_net.txt \
     device/samsung/kyletdcmcc/prebuilts/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf

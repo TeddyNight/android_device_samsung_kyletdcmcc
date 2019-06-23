@@ -15,5 +15,5 @@
 -->
 
 <permissions>
-    <feature name="sec.android.mdm" />
+    <feature name="com.sec.android.mdm" />
 </permissions>

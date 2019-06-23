@@ -21,11 +21,12 @@ USE_CAMERA_STUB := false
 BOARD_KERNEL_CMDLINE := console=ttyS1,115200n8 mem=239M
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
-TARGET_PREBUILT_KERNEL := device/samsung/kyletdcmcc/kernel
-#TARGET_KERNEL_SOURCE := kernel/samsung/kyletdcmcc
-#TARGET_KERNEL_CONFIG := kyletd-vlx_defconfig
+BOARD_USES_UNCOMPRESSED_BOOT := true
+TARGET_KERNEL_SOURCE := kernel/samsung/kyletdcmcc
+TARGET_KERNEL_CONFIG := kyletd-vlx_defconfig
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
 TARGET_NO_BOOTLOADER := true
-TARGET_NO_RADIOIMAGE := true
+#TARGET_NO_RADIOIMAGE := true
 
 ## Platform
 BOARD_VENDOR := samsung
@@ -42,15 +43,13 @@ TARGET_ARCH_VARIANT_CPU := cortex-a5
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a5 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a5 -mfpu=neon -mfloat-abi=softfp
 
-# Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/kyletdcmcc/bluetooth
-
 ## Camera
 BOARD_USES_LEGACY_OVERLAY := true
 BOARD_NEEDS_MEMORYHEAPPMEM := true
 TARGET_DISABLE_ARM_PIE := true
 COMMON_GLOBAL_CFLAGS += -DBINDER_COMPAT
 COMMON_GLOBAL_CFLAGS += -DSAMSUNG_CAMERA_LEGACY
+
 
 ## Webkit
 ENABLE_WEBGL := true
@@ -72,6 +71,7 @@ BOARD_HAVE_BLUETOOTH := true
 # Bluetooth BCM
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/kyletdcmcc/bluetooth
+BOARD_BLUEDROID_VENDOR_CONF := device/samsung/kyletdcmcc/bluetooth/bt_vendor.conf
 
 ## Wi-Fi
 BOARD_WLAN_DEVICE := bcmdhd

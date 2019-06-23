@@ -56,7 +56,7 @@
 				<MP3>
 					<MaxFileSize value="2147483648" />
 					<MaxBitrate value="327680" />
-					<MaxSamplingRate value="49152" />
+					<MaxSamplingRate value="48000" />
 				</MP3>
 				<IMY>
 					<MaxFileSize value="104857600" />
@@ -71,43 +71,43 @@
 				<AMR>
 					<MaxFileSize value="2147483648" />
 					<MaxBitrate value="12288" />
-					<MaxSampling value="8192" />
+					<MaxSampling value="8000" />
 				</AMR>
 				<WAV>
 					<MaxFileSize value="2147483648" />
 					<MaxBitrate value="" />
-					<MaxSampling value="49152" />
+					<MaxSampling value="48000" />
 				</WAV>
 				<AAC>
 					<MaxFileSize value="2147483648" />
 					<MaxBitrate value="131072" />
-					<MaxSampling value="49152" />
+					<MaxSampling value="48000" />
 				</AAC>
 				<WMA>
 					<MaxFileSize value="2147483648" />
 					<MaxBitrate value="131072" />
-					<MaxSampling value="49152" />
+					<MaxSampling value="48000" />
 				</WMA>
 				<M4A>
 					<MaxFileSize value="2147483648" />
 					<MaxBitrate value="131072" />
-					<MaxSampling value="49152" />
+					<MaxSampling value="48000" />
 				</M4A>
 				<OGG>
 					<MaxFileSize value="2147483648" />
 					<MaxBitrate value="131072" />
-					<MaxSampling value="49152" />
+					<MaxSampling value="48000" />
 				</OGG>
 				<!-- 2011-03-14 add U1 support 3ga, flac Music file format -->
 				<_3GA>
 					<MaxFileSize value="2147483648" />
 					<MaxBitrate value="131072" />
-					<MaxSampling value="49152" />
+					<MaxSampling value="48000" />
 				</_3GA>
 				<FLAC>
 					<MaxFileSize value="2147483648" />
 					<MaxBitrate value="131072" />
-					<MaxSampling value="49152" />
+					<MaxSampling value="48000" />
 				</FLAC>
 			</FileFormat>
 		</Music>
@@ -165,11 +165,6 @@
 								<MaxSamplingRate value="48000" />
 								<MaxBitrate value="327680" />
 								<MaxChannel value="2" />
-							</Codec>
-							<Codec name="AC3" value="AC3">
-								<MaxSamplingRate value="48000" />
-								<MaxBitrate value="327680" />
-								<MaxChannel value="6" />
 							</Codec>
 						</Codecs>
 						<MaxSamplingRate value="48000" />
@@ -435,11 +430,6 @@
 								<MaxBitrate value="327680" />
 								<MaxChannel value="2" />
 							</Codec>
-							<Codec name="AC3" value="AC3">
-								<MaxSamplingRate value="48000" />
-								<MaxBitrate value="327680" />
-								<MaxChannel value="6" />
-							</Codec>
 						</Codecs>
 						<MaxSamplingRate value="48000" />
 						<MaxBitrate value="131072" />
@@ -483,12 +473,6 @@
 							<Codec value="WMV7" />
 							<Codec value="WMV8" />
 							<Codec name="WMV9 Main" value="WMV9 Main">
-								<MaxWidth value="1920" />
-								<MaxHeight value="1080" />
-								<MaxFrameRate value="30" />
-								<MaxBitrate value="17825792" />
-							</Codec>
-							<Codec name="MPEG4 ASP" value="MPEG4 ASP">
 								<MaxWidth value="1920" />
 								<MaxHeight value="1080" />
 								<MaxFrameRate value="30" />
@@ -542,6 +526,23 @@
 			</FileFormat>
 		</Movie>
 
+<Playlist>
+   <DefaultFolder>
+    <Internal value="/Playlists"/>
+   </DefaultFolder>
+   <FileFormat>
+    <PLA/>
+   </FileFormat> 
+  </Playlist>
+
+
+     		<!-- not support<SNote Version="1.0">
+			<DefaultFolder>
+				<Internal value="/S Note"/>
+				<External value=""/>
+			</DefaultFolder>
+		</SNote> -->
+
 		<!-- U1 not support <Playlist> <DefaultFolder> <Internal value="/Playlists"/> 
 			<External value="/Playlists"/> </DefaultFolder> <FileFormat> <PLA/> </FileFormat> 
 			</Playlist> -->
@@ -550,20 +551,28 @@
 			<EPUB> <Version value="1.0"/> <MaxFileSize value=""/> </EPUB> <PDF> <Version 
 			value="1.0"/> <MaxFileSize value=""/> </PDF> <TXT> <MaxFileSize value=""/> 
 			</TXT> </FileFormat> </Ebook> -->
+
+    		<SMemo2 Version="1.0">
+	    		<DefaultFolder>
+	        	<Internal value="/SMemo"/>
+	        	<External value=""/>
+	    		</DefaultFolder>
+    		</SMemo2>
+			
 		<BackupRestore version="2.0" platform="Android">
 			<Content name="Phonebook" Type="Standard" version="2.0"
 				supportVersion="2.0" />
 			<Content name="Calendar" Type="Custom" version="2.0"
 				supportVersion="2.0" Detail="Appointment" />
 			<Content name="Message" Type="Custom" version="2.0"
-				supportVersion="2.0">
+				supportVersion="2.0" RestoreReboot="true">
 				<TargetFilePath value="System:\BR\Message.bk" />
 			</Content>
-			
+			<!-- m0xx memo,task remove
 			<Content name="Memo" Type="Custom" version="2.0"
-				supportVersion="2.0" />
+				supportVersion="2.0" /> -->
 			<Content name="Task" Type="Custom" version="2.0"
-				supportVersion="2.0" />
+				supportVersion="2.0" /> 
 			<!-- m0xx minidiary removed. 	
 			<Content name="MiniDiary" Type="Custom" version="2.0"
 				supportVersion="2.0" >
@@ -604,7 +613,7 @@
 			<Content name="Others">
 				<FileExtension value="*" />
 				<TargetFilePath value="Internal:\*" />
-				<ExceptFolderPath value="Internal:\Android\data;Internal:\autonavidata50;Internal:\DioDict3B;Internal:\_SamsungBnR_\BR" />
+				<ExceptFolderPath value="Internal:\Android\data" />
 			</Content>
 
 			<Content name="Configuration" Type="Custom" version="2.0"
@@ -619,11 +628,27 @@
 				supportVersion="2.0" Detail="Account;Settings">
 				<TargetFilePath value="System:\BR\Email.bk" />
 			</Content>
-       			
-			<!-- not suppor <Content name="Application" Type="Device" version="2.0" supportVersion="2.0">
+
+   			<Content name="SMemo2" version="1.0" supportVersion="1.0" Detail="LinkedToSplanner">
+             			<FileExtension value="snb"/>
+            			<TargetFilePath value="Internal:\*"/>
+		   	</Content>			
+		   	
+			<!-- not support				
+       			<Content name="Smemo" Type="Custom" version="2.0" supportVersion="2.0">
+				<TargetFilePath value="System:\BR\Smemo.bk" /> 
+			</Content>
+
+			<Content name="Application" Type="Device" version="2.0" supportVersion="2.0">
 			      <FileExtension value="*" /> 
 			      <TargetFilePath value="Internal:\restore\*" /> 
+			</Content>
+			-->
+			<!-- not support <Content name="SNote" version="1.0" supportVersion="1.0" Detail="LinkedToSplanner">
+				<FileExtension value="snb"/>
+				<TargetFilePath value="Internal:\*"/>
 			</Content> -->
+
 		</BackupRestore>
 	</Contents>
 </SDP>

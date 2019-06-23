@@ -54,20 +54,23 @@
         <group gid="log" />
     </permission>
 
+    <permission name="android.permission.READ_EXTERNAL_STORAGE" >
+        <group gid="sdcard_r" />
+    </permission>
+
     <permission name="android.permission.WRITE_EXTERNAL_STORAGE" >
         <group gid="sdcard_rw" />
         <group gid="media_rw" />
-    </permission>
-
-    <!-- The group that can read /proc/cmdline -->
-    <permission name="com.sec.android.app.sysscope.permission.SYSSCOPE_ACCESS_SYSTEM_INFO" >
-        <group gid="radio" />
     </permission>
 
     <permission name="android.permission.WRITE_MEDIA_STORAGE" >
         <group gid="media_rw" />
     </permission>
 
+ 		<permission name="com.sec.android.app.sysscope.permission.SYSSCOPE_ACCESS_SYSTEM_INFO" >
+        <group gid="radio" />
+    </permission>
+    
     <permission name="android.permission.ACCESS_MTP" >
         <group gid="mtp" />
     </permission>
@@ -99,23 +102,16 @@
     <permission name="android.permission.MODIFY_NETWORK_ACCOUNTING">
         <group gid="net_bw_acct" />
     </permission>
-
-    <!-- Group that can access usb devices for printing -->
-    <permission name="android.permission.ACCESS_USB" >
-        <group gid="usb" />
-    </permission>
-
+    
     <!-- VPN -->
     <permission name="android.permission.SAMSUNG_MODIFY_ROUTE" >
         <group gid="net_admin" />
     </permission>
-
     <permission name="android.permission.SAMSUNG_TUNTAP" >
-        <group gid="vpn" />
+            <group gid="vpn" />
     </permission>
-
     <permission name="android.permission.SAMSUNG_MODIFY_IPTABLES" >
-        <group gid="net_raw" />
+            <group gid="net_raw" />
     </permission>
 
     <!-- ================================================================== -->
@@ -182,6 +178,13 @@
     <assign-permission name="android.permission.BACKUP" uid="shell" />
     <assign-permission name="android.permission.FORCE_STOP_PACKAGES" uid="shell" />
     <assign-permission name="android.permission.STOP_APP_SWITCHES" uid="shell" />
+    <assign-permission name="android.permission.ACCESS_CONTENT_PROVIDERS_EXTERNALLY" uid="shell" />
+    <assign-permission name="android.permission.GRANT_REVOKE_PERMISSIONS" uid="shell" />
+    <assign-permission name="android.permission.SET_KEYBOARD_LAYOUT" uid="shell" />
+    <assign-permission name="android.permission.GET_DETAILED_TASKS" uid="shell" />
+    <assign-permission name="android.permission.SET_SCREEN_COMPATIBILITY" uid="shell" />
+    <assign-permission name="android.permission.READ_EXTERNAL_STORAGE" uid="shell" />
+    <assign-permission name="android.permission.WRITE_EXTERNAL_STORAGE" uid="shell" />
 
     <assign-permission name="android.permission.MODIFY_AUDIO_SETTINGS" uid="media" />
     <assign-permission name="android.permission.ACCESS_DRM" uid="media" />

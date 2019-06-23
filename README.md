@@ -1,3 +1,14 @@
 # android_devices_samsung_kyletdcmcc
-The Cyanogenmod Devices tree
-it’s no working！！！！
+Working device tree for S7568.
+Working:
+  EGL
+  Wifi
+  Baseband
+Not Working:
+  Bluetooth
+  Audio
+  Camera
+Maybe working:
+  Phone
+Bug:
+  MTP

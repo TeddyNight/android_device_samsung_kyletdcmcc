@@ -129,6 +129,7 @@ PRODUCT_COPY_FILES += \
 $(LOCAL_PATH)/prebuilts/lib/libaudiopolicy_sec.so:system/lib/libaudiopolicy_sec.so \
 $(LOCAL_PATH)/prebuilts/lib/libsamsungSoundbooster.so:system/lib/libsamsungSoundbooster.so \
 $(LOCAL_PATH)/prebuilts/lib/lib_SamsungRec_V01006.so:system/lib/lib_SamsungRec_V01006.so \
+$(LOCAL_PATH)/prebuilts/lib/libxlist.so:system/lib/libxlist.so \
 $(LOCAL_PATH)/prebuilts/lib/lib_Samsung_SB_AM_for_ICS_v03008.so:system/lib/lib_Samsung_SB_AM_for_ICS_v03008.so \
 $(LOCAL_PATH)/prebuilts/lib/libsamsungRecord.so:system/lib/libsamsungRecord.so \
 $(LOCAL_PATH)/prebuilts/lib/hw/audio_policy.sc8810.so:system/lib/hw/audio_policy.sc8810.so \

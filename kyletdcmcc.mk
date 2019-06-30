@@ -38,6 +38,9 @@ PRODUCT_AAPT_PREF_CONFIG := hdpi
 PRODUCT_PACKAGES += \
     libnetcmdiface
 
+PRODUCT_PACKAGES += \
+    libtinyalsa
+
 #PRODUCT_PACKAGES += \
 #    charger \
 #    charger_res_images

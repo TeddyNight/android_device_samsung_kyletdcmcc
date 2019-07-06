@@ -77,7 +77,6 @@ PRODUCT_COPY_FILES += \
     device/samsung/kyletdcmcc/boot/init.sp8810.usb.rc:root/init.sp8810.usb.rc \
     device/samsung/kyletdcmcc/boot/ueventd.sp8810.rc:root/ueventd.sp8810.rc \
     device/samsung/kyletdcmcc/boot/bin/charge:root/bin/charge \
-#    device/samsung/kyletdcmcc/boot/bin/rawdatad:root/bin/rawdatad \
     device/samsung/kyletdcmcc/boot/bin/vcharged:root/bin/vcharged \
     device/samsung/kyletdcmcc/boot/init.usb.rc:root/init.usb.rc \
     device/samsung/kyletdcmcc/boot/init.bt.rc:root/init.bt.rc \
@@ -133,6 +132,7 @@ $(LOCAL_PATH)/prebuilts/lib/libaudiopolicy_sec.so:system/lib/libaudiopolicy_sec.
 $(LOCAL_PATH)/prebuilts/lib/libsamsungSoundbooster.so:system/lib/libsamsungSoundbooster.so \
 $(LOCAL_PATH)/prebuilts/lib/lib_SamsungRec_V01006.so:system/lib/lib_SamsungRec_V01006.so \
 $(LOCAL_PATH)/prebuilts/lib/libxlist.so:system/lib/libxlist.so \
+$(LOCAL_PATH)/prebuilts/lib/libengclient.so:system/lib/libengclient.so \
 $(LOCAL_PATH)/prebuilts/lib/lib_Samsung_SB_AM_for_ICS_v03008.so:system/lib/lib_Samsung_SB_AM_for_ICS_v03008.so \
 $(LOCAL_PATH)/prebuilts/lib/libsamsungRecord.so:system/lib/libsamsungRecord.so \
 $(LOCAL_PATH)/prebuilts/lib/hw/audio_policy.sc8810.so:system/lib/hw/audio_policy.sc8810.so \

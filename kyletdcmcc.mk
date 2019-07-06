@@ -39,7 +39,12 @@ PRODUCT_PACKAGES += \
     libnetcmdiface
 
 PRODUCT_PACKAGES += \
+    libvbeffect \
+    libvbpga \
     libtinyalsa
+
+PRODUCT_PACKAGES += \
+    camera.sc8810
 
 #PRODUCT_PACKAGES += \
 #    charger \
@@ -131,7 +136,12 @@ PRODUCT_COPY_FILES += \
 $(LOCAL_PATH)/prebuilts/lib/libaudiopolicy_sec.so:system/lib/libaudiopolicy_sec.so \
 $(LOCAL_PATH)/prebuilts/lib/libsamsungSoundbooster.so:system/lib/libsamsungSoundbooster.so \
 $(LOCAL_PATH)/prebuilts/lib/lib_SamsungRec_V01006.so:system/lib/lib_SamsungRec_V01006.so \
+$(LOCAL_PATH)/prebuilts/lib/libwvm.so:system/lib/libwvm.so \
+$(LOCAL_PATH)/prebuilts/lib/liblvvewrapper.so:system/lib/liblvvewrapper.so \
+$(LOCAL_PATH)/prebuilts/lib/libLifevibes_lvvefs.so:system/lib/libLifevibes_lvvefs.so \
 $(LOCAL_PATH)/prebuilts/lib/libxlist.so:system/lib/libxlist.so \
+$(LOCAL_PATH)/prebuilts/lib/lib_Samsung_Resampler.so:system/lib/lib_Samsung_Resampler.so \
+$(LOCAL_PATH)/prebuilts/lib/libaudio-ril.so:system/lib/libaudio-ril.so \
 $(LOCAL_PATH)/prebuilts/lib/libengclient.so:system/lib/libengclient.so \
 $(LOCAL_PATH)/prebuilts/lib/lib_Samsung_SB_AM_for_ICS_v03008.so:system/lib/lib_Samsung_SB_AM_for_ICS_v03008.so \
 $(LOCAL_PATH)/prebuilts/lib/libsamsungRecord.so:system/lib/libsamsungRecord.so \
@@ -145,9 +155,34 @@ $(LOCAL_PATH)/prebuilts/lib/libvolumeprofilesystem.so:system/lib/libvolumeprofil
 
 # Audio configs
 PRODUCT_COPY_FILES += \
-#$(LOCAL_PATH)/prebuilts/etc/asound.conf:system/etc/asound.conf \
-$(LOCAL_PATH)/prebuilts/etc/audio_effects.conf:system/etc/audio_effects.conf
-
+$(LOCAL_PATH)/prebuilts/etc/tiny_hw.xml:system/etc/tiny_hw.xml \
+$(LOCAL_PATH)/prebuilts/etc/tinyucm.conf:system/etc/tinyucm.conf \
+$(LOCAL_PATH)/prebuilts/etc/Volume.db:system/etc/Volume.db \
+$(LOCAL_PATH)/prebuilts/etc/audio_para:system/etc/audio_para \
+$(LOCAL_PATH)/prebuilts/etc/codec_pga.xml:system/etc/codec_pga.xml \
+$(LOCAL_PATH)/prebuilts/etc/audio/LVVEFS_Rx_Configuration.txt:system/etc/audio/LVVEFS_Rx_Configuration.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/LVVEFS_Tx_Configuration.txt:system/etc/audio/LVVEFS_Tx_Configuration.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Rx_ControlParams_BLUETOOTH_HEADSET.txt:system/etc/audio/Rx_ControlParams_BLUETOOTH_HEADSET.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Rx_ControlParams_EARPIECE_WIDEBAND.txt:system/etc/audio/Rx_ControlParams_EARPIECE_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Rx_ControlParams_SPEAKER_WIDEBAND.txt:system/etc/audio/Rx_ControlParams_SPEAKER_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Rx_ControlParams_WIRED_HEADPHONE_WIDEBAND.txt:system/etc/audio/Rx_ControlParams_WIRED_HEADPHONE_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Rx_ControlParams_WIRED_HEADSET_WIDEBAND.txt:system/etc/audio/Rx_ControlParams_WIRED_HEADSET_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Tx_ControlParams_BLUETOOTH_HEADSET.txt:system/etc/audio/Tx_ControlParams_BLUETOOTH_HEADSET.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Tx_ControlParams_EARPIECE_WIDEBAND.txt:system/etc/audio/Tx_ControlParams_EARPIECE_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Tx_ControlParams_SPEAKER_WIDEBAND.txt:system/audio/Tx_ControlParams_SPEAKER_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Tx_ControlParams_WIRED_HEADPHONE_WIDEBAND.txt:system/etc/audio/Tx_ControlParams_WIRED_HEADPHONE_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio_VR/LVVEFS_Rx_Configuration.txt:system/etc/audio_VR/LVVEFS_Rx_Configuration.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio_VR/LVVEFS_Tx_Configuration.txt:system/etc/audio_VR/LVVEFS_Tx_Configuration.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio_VR/Rx_ControlParams_VR_BLUETOOTH_HEADSET.txt:system/etc/audio_VR/Rx_ControlParams_VR_BLUETOOTH_HEADSET.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio_VR/Rx_ControlParams_VR_EARPIECE_WIDEBAND.txt:system/etc/audio_VR/Rx_ControlParams_VR_EARPIECE_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio_VR/Rx_ControlParams_VR_SPEAKER_WIDEBAND.txt:system/etc/audio_VR/Rx_ControlParams_VR_SPEAKER_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio_VR/Rx_ControlParams_VR_WIRED_HEADPHONE_WIDEBAND.txt:system/etc/audio_VR/Rx_ControlParams_VR_WIRED_HEADPHONE_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio_VR/Rx_ControlParams_VR_WIRED_HEADSET_WIDEBAND.txt:system/etc/audio_VR/Rx_ControlParams_VR_WIRED_HEADSET_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio_VR/Tx_ControlParams_VR_BLUETOOTH_HEADSET.txt:system/etc/audio_VR/Tx_ControlParams_VR_BLUETOOTH_HEADSET.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio_VR/Tx_ControlParams_VR_EARPIECE_WIDEBAND.txt:system/etc/audio_VR/Tx_ControlParams_VR_EARPIECE_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio_VR/Tx_ControlParams_VR_SPEAKER_WIDEBAND.txt:system/etc/audio_VR/Tx_ControlParams_VR_SPEAKER_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio_VR/Tx_ControlParams_VR_WIRED_HEADPHONE_WIDEBAND.txt:system/etc/audio_VR/Tx_ControlParams_VR_WIRED_HEADPHONE_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio_VR/Tx_ControlParams_VR_WIRED_HEADSET_WIDEBAND.txt:system/etc/audio_VR/Tx_ControlParams_VR_WIRED_HEADSET_WIDEBAND.txt 
 ## PreBuild Hal (Only Test)
 HW_TGT := /system/lib/hw
 HW_SRC := $(LOCAL_PATH)/prebuilts/lib/hw
@@ -155,11 +190,11 @@ HW_SRC := $(LOCAL_PATH)/prebuilts/lib/hw
 PRODUCT_COPY_FILES += \
 $(HW_SRC)/sensors.sc8810.so:$(HW_TGT)/sensors.sc8810.so \
 $(HW_SRC)/lights.sc8810.so:$(HW_TGT)/lights.sc8810.so \
-$(HW_SRC)/camera.sc8810.so:$(HW_TGT)/camera.sc8810.so \
 $(HW_SRC)/hwcomposer.sc8810.so:$(HW_TGT)/hwcomposer.sc8810.so \
 $(HW_SRC)/gralloc.sc8810.so:$(HW_TGT)/gralloc.sc8810.so \
 $(HW_SRC)/gps.sc8810.so:$(HW_TGT)/gps.sc8810.so \
 $(HW_SRC)/gralloc.default.so:$(HW_TGT)/gralloc.default.so \
+#$(HW_SRC)/camera.sc8810.so:$(HW_TGT)/camera.sc8810.so \
 #$(HW_SRC)/audio.primary.default.so:$(HW_TGT)/audio.primary.default.so \
 #$(HW_SRC)/audio.primary.sc8810.so:$(HW_TGT)/audio.primary.sc8810.so \
 #$(HW_SRC)/audio_policy.default.so:$(HW_TGT)/audio_policy.default.so \

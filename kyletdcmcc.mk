@@ -43,9 +43,6 @@ PRODUCT_PACKAGES += \
     libvbpga \
     libtinyalsa
 
-PRODUCT_PACKAGES += \
-    camera.sc8810
-
 #PRODUCT_PACKAGES += \
 #    charger \
 #    charger_res_images
@@ -194,7 +191,7 @@ $(HW_SRC)/hwcomposer.sc8810.so:$(HW_TGT)/hwcomposer.sc8810.so \
 $(HW_SRC)/gralloc.sc8810.so:$(HW_TGT)/gralloc.sc8810.so \
 $(HW_SRC)/gps.sc8810.so:$(HW_TGT)/gps.sc8810.so \
 $(HW_SRC)/gralloc.default.so:$(HW_TGT)/gralloc.default.so \
-#$(HW_SRC)/camera.sc8810.so:$(HW_TGT)/camera.sc8810.so \
+$(HW_SRC)/camera.sc8810.so:$(HW_TGT)/camera.sc8810.so \
 #$(HW_SRC)/audio.primary.default.so:$(HW_TGT)/audio.primary.default.so \
 #$(HW_SRC)/audio.primary.sc8810.so:$(HW_TGT)/audio.primary.sc8810.so \
 #$(HW_SRC)/audio_policy.default.so:$(HW_TGT)/audio_policy.default.so \

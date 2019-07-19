@@ -41,7 +41,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libvbeffect \
     libvbpga \
-    libtinyalsa
+    libtinyalsa \
 
 #PRODUCT_PACKAGES += \
 #    charger \

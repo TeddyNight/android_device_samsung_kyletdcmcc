@@ -147,6 +147,7 @@ $(LOCAL_PATH)/prebuilts/lib/hw/audio.primary.sc8810.so:system/lib/hw/audio.prima
 $(LOCAL_PATH)/prebuilts/lib/libcontrolcsc.so:system/lib/libcontrolcsc.so \
 $(LOCAL_PATH)/prebuilts/lib/libvolumemanager.so:system/lib/libvolumemanager.so \
 $(LOCAL_PATH)/prebuilts/lib/libvolumemanager_jni.so:system/lib/libvolumemanager_jni.so \
+$(LOCAL_PATH)/prebuilts/lib/libWVStreamControlAPI_L3.so:system/lib/libWVStreamControlAPI_L3.so \
 $(LOCAL_PATH)/prebuilts/lib/libvolumeprofilesystem.so:system/lib/libvolumeprofilesystem.so
 
 
@@ -162,12 +163,37 @@ $(LOCAL_PATH)/prebuilts/etc/audio/LVVEFS_Tx_Configuration.txt:system/etc/audio/L
 $(LOCAL_PATH)/prebuilts/etc/audio/Rx_ControlParams_BLUETOOTH_HEADSET.txt:system/etc/audio/Rx_ControlParams_BLUETOOTH_HEADSET.txt \
 $(LOCAL_PATH)/prebuilts/etc/audio/Rx_ControlParams_EARPIECE_WIDEBAND.txt:system/etc/audio/Rx_ControlParams_EARPIECE_WIDEBAND.txt \
 $(LOCAL_PATH)/prebuilts/etc/audio/Rx_ControlParams_SPEAKER_WIDEBAND.txt:system/etc/audio/Rx_ControlParams_SPEAKER_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Tx_ControlParams_SECVOIP_SPEAKER_WIDEBAND.txt:system/etc/audio/Tx_ControlParams_SECVOIP_SPEAKER_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Tx_ControlParams_SECVOIP_SPEAKER_WIDEBAND.txt:system/etc/audio/Tx_ControlParams_SECVOIP_SPEAKER_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Tx_ControlParams_SECVOIP_SPEAKER_WIDEBAND.txt:system/etc/audio/Tx_ControlParams_SECVOIP_SPEAKER_WIDEBAND.txt \
 $(LOCAL_PATH)/prebuilts/etc/audio/Rx_ControlParams_WIRED_HEADPHONE_WIDEBAND.txt:system/etc/audio/Rx_ControlParams_WIRED_HEADPHONE_WIDEBAND.txt \
 $(LOCAL_PATH)/prebuilts/etc/audio/Rx_ControlParams_WIRED_HEADSET_WIDEBAND.txt:system/etc/audio/Rx_ControlParams_WIRED_HEADSET_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Rx_ControlParams_SECFMC_BLUETOOTH_HEADSET.txt:system/etc/audio/Rx_ControlParams_SECFMC_BLUETOOTH_HEADSET.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Rx_ControlParams_SECFMC_EARPIECE_WIDEBAND.txt:system/etc/audio/Rx_ControlParams_SECFMC_EARPIECE_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Rx_ControlParams_SECFMC_SPEAKER_WIDEBAND.txt:system/etc/audio/Rx_ControlParams_SECFMC_SPEAKER_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Rx_ControlParams_SECFMC_WIRED_HEADPHONE_WIDEBAND.txt:system/etc/audio/Rx_ControlParams_SECFMC_WIRED_HEADPHONE_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Rx_ControlParams_SECFMC_WIRED_HEADSET_WIDEBAND.txt:system/etc/audio/Rx_ControlParams_SECFMC_WIRED_HEADSET_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Rx_ControlParams_SECVOIP_SPEAKER_WIDEBAND.txt:system/etc/audio/Rx_ControlParams_SECVOIP_SPEAKER_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Rx_ControlParams_SECVOIP_BLUETOOTH_HEADSET.txt:system/etc/audio/Rx_ControlParams_SECVOIP_BLUETOOTH_HEADSET.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Rx_ControlParams_SECVOIP_EARPIECE_WIDEBAND.txt:system/etc/audio/Rx_ControlParams_SECVOIP_EARPIECE_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Rx_ControlParams_SECVOIP_WIRED_HEADPHONE_WIDEBAND.txt:system/etc/audio/Rx_ControlParams_SECVOIP_WIRED_HEADPHONE_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Rx_ControlParams_SECVOIP_WIRED_HEADSET_WIDEBAND.txt:system/etc/audio/Rx_ControlParams_SECVOIP_WIRED_HEADSET_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Tx_ControlParams_SECFMC_BLUETOOTH_HEADSET.txt:system/etc/audio/Tx_ControlParams_SECFMC_BLUETOOTH_HEADSET.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Tx_ControlParams_SECFMC_EARPIECE_WIDEBAND.txt:system/etc/audio/Tx_ControlParams_SECFMC_EARPIECE_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Tx_ControlParams_SECFMC_SPEAKER_WIDEBAND.txt:system/etc/audio/Tx_ControlParams_SECFMC_SPEAKER_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Tx_ControlParams_SECFMC_WIRED_HEADPHONE_WIDEBAND.txt:system/etc/audio/Tx_ControlParams_SECFMC_WIRED_HEADPHONE_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Tx_ControlParams_SECFMC_WIRED_HEADSET_WIDEBAND.txt:system/etc/audio/Tx_ControlParams_SECFMC_WIRED_HEADSET_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Tx_ControlParams_SECVOIP_SPEAKER_WIDEBAND.txt:system/etc/audio/Tx_ControlParams_SECVOIP_SPEAKER_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Tx_ControlParams_SECVOIP_BLUETOOTH_HEADSET.txt:system/etc/audio/Tx_ControlParams_SECVOIP_BLUETOOTH_HEADSET.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Tx_ControlParams_SECVOIP_EARPIECE_WIDEBAND.txt:system/etc/audio/Tx_ControlParams_SECVOIP_EARPIECE_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Tx_ControlParams_SECVOIP_WIRED_HEADPHONE_WIDEBAND.txt:system/etc/audio/Tx_ControlParams_SECVOIP_WIRED_HEADPHONE_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Tx_ControlParams_SECVOIP_WIRED_HEADSET_WIDEBAND.txt:system/etc/audio/Tx_ControlParams_SECVOIP_WIRED_HEADSET_WIDEBAND.txt \
 $(LOCAL_PATH)/prebuilts/etc/audio/Tx_ControlParams_BLUETOOTH_HEADSET.txt:system/etc/audio/Tx_ControlParams_BLUETOOTH_HEADSET.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Tx_ControlParams_WIRED_HEADSET_WIDEBAND.txt:system/etc/audio/Tx_ControlParams_WIRED_HEADSET_WIDEBAND.txt \
 $(LOCAL_PATH)/prebuilts/etc/audio/Tx_ControlParams_EARPIECE_WIDEBAND.txt:system/etc/audio/Tx_ControlParams_EARPIECE_WIDEBAND.txt \
-$(LOCAL_PATH)/prebuilts/etc/audio/Tx_ControlParams_SPEAKER_WIDEBAND.txt:system/audio/Tx_ControlParams_SPEAKER_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Tx_ControlParams_SPEAKER_WIDEBAND.txt:system/etc/audio/Tx_ControlParams_SPEAKER_WIDEBAND.txt \
 $(LOCAL_PATH)/prebuilts/etc/audio/Tx_ControlParams_WIRED_HEADPHONE_WIDEBAND.txt:system/etc/audio/Tx_ControlParams_WIRED_HEADPHONE_WIDEBAND.txt \
+$(LOCAL_PATH)/prebuilts/etc/audio/Tx_ControlParams_SECVOIP_SPEAKER_WIDEBAND.txt:system/etc/audio/Tx_ControlParams_SECVOIP_SPEAKER_WIDEBAND.txt \
 $(LOCAL_PATH)/prebuilts/etc/audio_VR/LVVEFS_Rx_Configuration.txt:system/etc/audio_VR/LVVEFS_Rx_Configuration.txt \
 $(LOCAL_PATH)/prebuilts/etc/audio_VR/LVVEFS_Tx_Configuration.txt:system/etc/audio_VR/LVVEFS_Tx_Configuration.txt \
 $(LOCAL_PATH)/prebuilts/etc/audio_VR/Rx_ControlParams_VR_BLUETOOTH_HEADSET.txt:system/etc/audio_VR/Rx_ControlParams_VR_BLUETOOTH_HEADSET.txt \

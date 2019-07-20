@@ -95,10 +95,6 @@ BOARD_NO_APSME_ATTR := true
 ## Samsung has weird framebuffer
 TARGET_NO_INITLOGO := true
 
-## Use device specific modules
-TARGET_PROVIDES_LIBLIGHTS := true
-TARGET_PROVIDES_LIBAUDIO := true
-
 # Audio
 BOARD_USES_TINYALSA_AUDIO := true
 BOARD_USE_SAMSUNG_SEPARATEDSTREAM := true

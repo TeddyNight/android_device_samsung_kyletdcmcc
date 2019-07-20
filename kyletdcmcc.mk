@@ -1,8 +1,9 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # The gps config appropriate for this device
-$(call inherit-product, device/common/gps/gps_us_supl.mk)
+#$(call inherit-product, device/common/gps/gps_us_supl.mk)
 
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product-if-exists, vendor/samsung/kyletdcmcc/kyletdcmcc-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/samsung/kyletdcmcc/overlay
@@ -12,7 +13,6 @@ PRODUCT_AAPT_PREF_CONFIG := hdpi
 
 LOCAL_PATH := device/samsung/kyletdcmcc
 
-$(call inherit-product, build/target/product/full.mk)
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=8
 PRODUCT_NAME := cm_kyletdcmcc
@@ -42,6 +42,9 @@ PRODUCT_PACKAGES += \
     libvbeffect \
     libvbpga \
     libtinyalsa \
+    tinymix \
+    audio.a2dp.default \
+    audio.usb.default 
 
 #PRODUCT_PACKAGES += \
 #    charger \
@@ -57,18 +60,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     make_ext4fs \
     setup_fs
-
-# Live Wallpapers
-PRODUCT_PACKAGES += \
-    Galaxy4 \
-    HoloSpiralWallpaper \
-    LiveWallpapers \
-    LiveWallpapersPicker \
-    MagicSmokeWallpapers \
-    NoiseField \
-    PhaseBeam \
-    VisualizationWallpapers \
-    librs_jni
 
 $(call inherit-product, device/samsung/kyletdcmcc/opensource/libasound/alsa-lib-products.mk)
 
@@ -99,8 +90,10 @@ PRODUCT_COPY_FILES += \
 $(LOCAL_PATH)/prebuilts/lib/libomx_avcdec_sharedlibrary.so:system/lib/libomx_avcdec_sharedlibrary.so \
 $(LOCAL_PATH)/prebuilts/lib/libomx_m4vdec_sharedlibrary.so:system/lib/libomx_m4vdec_sharedlibrary.so \
 $(LOCAL_PATH)/prebuilts/lib/libomx_m4venc_sharedlibrary.so:system/lib/libomx_m4venc_sharedlibrary.so \
-$(LOCAL_PATH)/prebuilts/lib/libomx_sharedlibrary.so:system/lib/libomx_sharedlibrary.so
-
+$(LOCAL_PATH)/prebuilts/lib/libomx_sharedlibrary.so:system/lib/libomx_sharedlibrary.so \
+$(LOCAL_PATH)/prebuilts/lib/libstagefrighthw.so:system/lib/libstagefrighthw.so \
+$(LOCAL_PATH)/prebuilts/lib/libopencore_common.so:system/lib/libopencore_common.so \
+$(LOCAL_PATH)/prebuilts/etc/pvplayer.cfg:system/etc/pvplayer.cfg
 
 
 # Egl
@@ -124,9 +117,39 @@ PRODUCT_COPY_FILES += \
 #########################################
 ## Other stuff
 #########################################
-# Rest of /system/etc
+# System files
 PRODUCT_COPY_FILES += \
-$(LOCAL_PATH)/prebuilts/etc/dbus.conf:system/etc/dbus.conf 
+$(LOCAL_PATH)/prebuilts/bin/ext_data.sh:system/bin/ext_data.sh \
+$(LOCAL_PATH)/prebuilts/bin/ext_symlink.sh:system/bin/ext_symlink.sh \
+$(LOCAL_PATH)/prebuilts/lib/libatparser.so:system/lib/libatparser.so \
+$(LOCAL_PATH)/prebuilts/lib/libeng_wifi_ptest.so:system/lib/libeng_wifi_ptest.so \
+$(LOCAL_PATH)/prebuilts/lib/libengclient.so:system/lib/libengclient.so \
+$(LOCAL_PATH)/prebuilts/lib/libnvaccessor.so:system/lib/libnvaccessor.so \
+
+PRODUCT_COPY_FILES += \
+$(LOCAL_PATH)/prebuilts/bin/at_distributor:system/bin/at_distributor \
+$(LOCAL_PATH)/prebuilts/bin/bluetoothd:system/bin/bluetoothd \
+$(LOCAL_PATH)/prebuilts/bin/engappclient:system/bin/engappclient \
+$(LOCAL_PATH)/prebuilts/bin/engmodemclient:system/bin/engmodemclient \
+$(LOCAL_PATH)/prebuilts/bin/engpcclient:system/bin/engpcclient \
+$(LOCAL_PATH)/prebuilts/bin/engservice:system/bin/engservice \
+$(LOCAL_PATH)/prebuilts/bin/immvibed:system/bin/immvibed \
+$(LOCAL_PATH)/prebuilts/bin/macloader:system/bin/macloader \
+$(LOCAL_PATH)/prebuilts/bin/nvm_daemon:system/bin/nvm_daemon \
+$(LOCAL_PATH)/prebuilts/bin/slog:system/bin/slog \
+$(LOCAL_PATH)/prebuilts/bin/slogctl:system/bin/slogctl \
+$(LOCAL_PATH)/prebuilts/bin/sprd_monitor:system/bin/sprd_monitor 
+
+#Phone
+PRODUCT_COPY_FILES += \
+$(LOCAL_PATH)/prebuilts/bin/phoneserver:system/bin/phoneserver \
+$(LOCAL_PATH)/prebuilts/bin/phoneserver_2sim:system/bin/phoneserver_2sim
+
+# Media
+PRODUCT_COPY_FILES += \
+     $(LOCAL_PATH)/media/media_codecs.xml:system/etc/media_codecs.xml \
+     $(LOCAL_PATH)/media/media_profiles.xml:system/etc/media_profiles.xml
+
 
 # Audio libraries
 PRODUCT_COPY_FILES += \
@@ -139,11 +162,8 @@ $(LOCAL_PATH)/prebuilts/lib/libLifevibes_lvvefs.so:system/lib/libLifevibes_lvvef
 $(LOCAL_PATH)/prebuilts/lib/libxlist.so:system/lib/libxlist.so \
 $(LOCAL_PATH)/prebuilts/lib/lib_Samsung_Resampler.so:system/lib/lib_Samsung_Resampler.so \
 $(LOCAL_PATH)/prebuilts/lib/libaudio-ril.so:system/lib/libaudio-ril.so \
-$(LOCAL_PATH)/prebuilts/lib/libengclient.so:system/lib/libengclient.so \
 $(LOCAL_PATH)/prebuilts/lib/lib_Samsung_SB_AM_for_ICS_v03008.so:system/lib/lib_Samsung_SB_AM_for_ICS_v03008.so \
 $(LOCAL_PATH)/prebuilts/lib/libsamsungRecord.so:system/lib/libsamsungRecord.so \
-$(LOCAL_PATH)/prebuilts/lib/hw/audio_policy.sc8810.so:system/lib/hw/audio_policy.sc8810.so \
-$(LOCAL_PATH)/prebuilts/lib/hw/audio.primary.sc8810.so:system/lib/hw/audio.primary.sc8810.so \
 $(LOCAL_PATH)/prebuilts/lib/libcontrolcsc.so:system/lib/libcontrolcsc.so \
 $(LOCAL_PATH)/prebuilts/lib/libvolumemanager.so:system/lib/libvolumemanager.so \
 $(LOCAL_PATH)/prebuilts/lib/libvolumemanager_jni.so:system/lib/libvolumemanager_jni.so \
@@ -157,7 +177,12 @@ $(LOCAL_PATH)/prebuilts/etc/tiny_hw.xml:system/etc/tiny_hw.xml \
 $(LOCAL_PATH)/prebuilts/etc/tinyucm.conf:system/etc/tinyucm.conf \
 $(LOCAL_PATH)/prebuilts/etc/Volume.db:system/etc/Volume.db \
 $(LOCAL_PATH)/prebuilts/etc/audio_para:system/etc/audio_para \
+$(LOCAL_PATH)/prebuilts/etc/vbc_eq:system/etc/vbc_eq \
 $(LOCAL_PATH)/prebuilts/etc/codec_pga.xml:system/etc/codec_pga.xml \
+$(LOCAL_PATH)/prebuilts/etc/audio_policy.conf:system/etc/audio_policy.conf \
+$(LOCAL_PATH)/prebuilts/etc/devicevolume.xml:system/etc/devicevolume.xml \
+$(LOCAL_PATH)/prebuilts/etc/formatvolume.xml:system/etc/formatvolume.xml \
+$(LOCAL_PATH)/prebuilts/etc/default_gain.conf:system/etc/default_gain.conf \
 $(LOCAL_PATH)/prebuilts/etc/audio/LVVEFS_Rx_Configuration.txt:system/etc/audio/LVVEFS_Rx_Configuration.txt \
 $(LOCAL_PATH)/prebuilts/etc/audio/LVVEFS_Tx_Configuration.txt:system/etc/audio/LVVEFS_Tx_Configuration.txt \
 $(LOCAL_PATH)/prebuilts/etc/audio/Rx_ControlParams_BLUETOOTH_HEADSET.txt:system/etc/audio/Rx_ControlParams_BLUETOOTH_HEADSET.txt \
@@ -216,41 +241,13 @@ $(HW_SRC)/lights.sc8810.so:$(HW_TGT)/lights.sc8810.so \
 $(HW_SRC)/hwcomposer.sc8810.so:$(HW_TGT)/hwcomposer.sc8810.so \
 $(HW_SRC)/gralloc.sc8810.so:$(HW_TGT)/gralloc.sc8810.so \
 $(HW_SRC)/gps.sc8810.so:$(HW_TGT)/gps.sc8810.so \
-$(HW_SRC)/gralloc.default.so:$(HW_TGT)/gralloc.default.so \
 $(HW_SRC)/camera.sc8810.so:$(HW_TGT)/camera.sc8810.so \
-#$(HW_SRC)/audio.primary.default.so:$(HW_TGT)/audio.primary.default.so \
-#$(HW_SRC)/audio.primary.sc8810.so:$(HW_TGT)/audio.primary.sc8810.so \
-#$(HW_SRC)/audio_policy.default.so:$(HW_TGT)/audio_policy.default.so \
-
-# Power-OFF Charging animations
-PRODUCT_COPY_FILES += \
-$(LOCAL_PATH)/prebuilts/media/battery_batteryerror.qmg:system/media/battery_batteryerror.qmg \
-$(LOCAL_PATH)/prebuilts/media/battery_charging_5.qmg:system/media/battery_charging_5.qmg \
-$(LOCAL_PATH)/prebuilts/media/battery_charging_10.qmg:system/media/battery_charging_10.qmg \
-$(LOCAL_PATH)/prebuilts/media/battery_charging_15.qmg:system/media/battery_charging_15.qmg \
-$(LOCAL_PATH)/prebuilts/media/battery_charging_20.qmg:system/media/battery_charging_20.qmg \
-$(LOCAL_PATH)/prebuilts/media/battery_charging_25.qmg:system/media/battery_charging_25.qmg \
-$(LOCAL_PATH)/prebuilts/media/battery_charging_30.qmg:system/media/battery_charging_30.qmg \
-$(LOCAL_PATH)/prebuilts/media/battery_charging_35.qmg:system/media/battery_charging_35.qmg \
-$(LOCAL_PATH)/prebuilts/media/battery_charging_40.qmg:system/media/battery_charging_40.qmg \
-$(LOCAL_PATH)/prebuilts/media/battery_charging_45.qmg:system/media/battery_charging_45.qmg \
-$(LOCAL_PATH)/prebuilts/media/battery_charging_50.qmg:system/media/battery_charging_50.qmg \
-$(LOCAL_PATH)/prebuilts/media/battery_charging_55.qmg:system/media/battery_charging_55.qmg \
-$(LOCAL_PATH)/prebuilts/media/battery_charging_60.qmg:system/media/battery_charging_60.qmg \
-$(LOCAL_PATH)/prebuilts/media/battery_charging_65.qmg:system/media/battery_charging_65.qmg \
-$(LOCAL_PATH)/prebuilts/media/battery_charging_70.qmg:system/media/battery_charging_70.qmg \
-$(LOCAL_PATH)/prebuilts/media/battery_charging_75.qmg:system/media/battery_charging_75.qmg \
-$(LOCAL_PATH)/prebuilts/media/battery_charging_80.qmg:system/media/battery_charging_80.qmg \
-$(LOCAL_PATH)/prebuilts/media/battery_charging_85.qmg:system/media/battery_charging_85.qmg \
-$(LOCAL_PATH)/prebuilts/media/battery_charging_90.qmg:system/media/battery_charging_90.qmg \
-$(LOCAL_PATH)/prebuilts/media/battery_charging_95.qmg:system/media/battery_charging_95.qmg \
-$(LOCAL_PATH)/prebuilts/media/battery_charging_100.qmg:system/media/battery_charging_100.qmg \
-$(LOCAL_PATH)/prebuilts/media/battery_error.qmg:system/media/battery_error.qmg \
-$(LOCAL_PATH)/prebuilts/media/chargingwarning.qmg:system/media/chargingwarning.qmg \
-$(LOCAL_PATH)/prebuilts/media/Disconnected.qmg:system/media/Disconnected.qmg
+$(HW_SRC)/audio.primary.sc8810.so:$(HW_TGT)/audio.primary.sc8810.so \
+$(HW_SRC)/audio_policy.sc8810.so:$(HW_TGT)/audio_policy.sc8810.so 
 
 # Hardware features available on this device
 PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
     frameworks/native/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
@@ -262,6 +259,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
+    frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
 # RIL
@@ -269,9 +267,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilts/lib/libsec-ril.so:system/lib/libsec-ril.so \
     $(LOCAL_PATH)/prebuilts/lib/libsecril-client.so:system/lib/libsecril-client.so \
     $(LOCAL_PATH)/prebuilts/lib/libsecnativefeature.so:system/lib/libsecnativefeature.so \
-    $(LOCAL_PATH)/prebuilts/bin/rild:system/bin/rild
-#    $(LOCAL_PATH)/prebuilts/lib/libril.so:system/lib/libril.so \
-
+    $(LOCAL_PATH)/prebuilts/bin/rild_sp:system/bin/rild_sp \
+    $(LOCAL_PATH)/prebuilts/lib/libril.so:system/lib/libril.so \
+    $(LOCAL_PATH)/prebuilts/lib/libreference-ril.so:system/lib/libreference-ril.so \
+    $(LOCAL_PATH)/prebuilts/lib/libomission_avoidance.so:system/lib/libomission_avoidance.so \
+    $(LOCAL_PATH)/prebuilts/lib/libfactoryutil.so:system/lib/libfactoryutil.so
 
 # Wifi
 PRODUCT_COPY_FILES += \
@@ -285,15 +285,7 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_COPY_FILES += \
-    device/samsung/kyletdcmcc/prebuilts/etc/bluetooth/audio.conf:system/etc/bluetooth/audio.conf \
-    device/samsung/kyletdcmcc/prebuilts/etc/bluetooth/auto_pairing.conf:system/etc/bluetooth/auto_pairing.conf \
-    device/samsung/kyletdcmcc/prebuilts/etc/bluetooth/blacklist.conf:system/etc/bluetooth/blacklist.conf \
-    device/samsung/kyletdcmcc/prebuilts/etc/bluetooth/input.conf:system/etc/bluetooth/input.conf \
-    device/samsung/kyletdcmcc/prebuilts/etc/bluetooth/main.conf:system/etc/bluetooth/main.conf \
-    device/samsung/kyletdcmcc/prebuilts/etc/bluetooth/network.conf:system/etc/bluetooth/network.conf \
     device/samsung/kyletdcmcc/prebuilts/bin/BCM4330B1_002.001.003.0693.0000_Samsung_Cori-vol25-TEST-ONLY.hcd:system/bin/BCM4330B1_002.001.003.0693.0000_Samsung_Cori-vol25-TEST-ONLY.hcd \
-    $(LOCAL_PATH)/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
 
 
 $(call inherit-product, device/samsung/kyletdcmcc/phone-hdpi-768-dalvik-heap.mk)
-$(call inherit-product, build/target/product/full.mk)

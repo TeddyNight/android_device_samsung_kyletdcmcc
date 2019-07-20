@@ -97,6 +97,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 Gallery2
 
+# Filesystem management tools
+PRODUCT_PACKAGES += \
+    make_ext4fs \
+    setup_fs
+
 PRODUCT_COPY_FILES += \
      $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
      $(LOCAL_PATH)/audio/devicevolume.xml:system/etc/devicevolume.xml \
@@ -194,8 +199,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 
 ## LDPI assets
-PRODUCT_AAPT_CONFIG := normal ldpi mdpi nodpi
-PRODUCT_AAPT_PREF_CONFIG := ldpi
+PRODUCT_AAPT_CONFIG := normal hdpi
+PRODUCT_AAPT_PREF_CONFIG := hdpi
 #$(call inherit-product, device/ldpi-common/ldpi.mk)
 
 #Wifi

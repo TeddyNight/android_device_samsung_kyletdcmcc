@@ -49,8 +49,8 @@ COMMON_GLOBAL_CFLAGS += -DSPRD_HARDWARE
 BOARD_KERNEL_CMDLINE := console=ttyS1,115200n8
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
-TARGET_KERNEL_SOURCE := kernel/samsung/kyletdcmcc/
-TARGET_KERNEL_CONFIG := kyletd-vlx_defconfig
+TARGET_KERNEL_SOURCE := kernel/samsung/mint/
+TARGET_KERNEL_CONFIG := cyanogenmod_mint_defconfig
 #TARGET_PREBUILT_KERNEL := device/samsung/mint/kernel
 BOARD_USES_UNCOMPRESSED_BOOT := true
 TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
@@ -73,16 +73,21 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1258291200
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 1946804224
 BOARD_FLASH_BLOCK_SIZE := 131072
 
-# Recovery
-#BOARD_LDPI_RECOVERY := true
-#BOARD_HAS_NO_SELECT_BUTTON := true
-#BOARD_USE_CUSTOM_RECOVERY_FONT := "<font_7x16.h>"
-#BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/mint/recovery/recovery_keys.c
-#TARGET_RECOVERY_INITRC := device/samsung/mint/recovery/recovery.rc
-#BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/mint/recovery/graphics.c
-#BOARD_HAS_NO_MISC_PARTITION := true
-#TARGET_RECOVERY_FSTAB := device/samsung/mint/recovery.fstab
-#BOARD_SUPPRESS_EMMC_WIPE := true
+
+## Recovery
+TARGET_RECOVERY_INITRC := device/samsung/mint/recovery/init.rc
+TARGET_RECOVERY_FSTAB := device/samsung/mint/recovery/recovery.fstab
+TARGET_USERIMAGES_USE_EXT4 := true
+BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/mint/recovery/graphics.c
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/mint/recovery/recovery_keys.c
+BOARD_HAS_SDCARD_INTERNAL := true
+BOARD_HAS_DOWNLOAD_MODE := true
+BOARD_USES_MMCUTILS := true
+BOARD_HAS_NO_MISC_PARTITION := true
+BOARD_FLASH_BLOCK_SIZE := 131072
+RECOVERY_CHARGE_ENABLE := true
+DEVICE_RESOLUTION := 480x800
+TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 
 # UMS
 BOARD_UMS_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun/file"

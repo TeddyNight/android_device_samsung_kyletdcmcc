@@ -4,11 +4,9 @@ Working:
   EGL
   Wifi
   Baseband
-Not Working:
-  Bluetooth
   Audio
   Camera
+Not Working:
+  Bluetooth
 Maybe working:
   Phone
-Bug:
-  MTP

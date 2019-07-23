@@ -73,7 +73,7 @@ BOARD_HAVE_BLUETOOTH := true
 # Bluetooth BCM
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/kyletdcmcc/bluetooth
-BOARD_BLUEDROID_VENDOR_CONF := device/samsung/kyletdcmcc/bluetooth/bt_vendor.conf
+BOARD_BLUEDROID_VENDOR_CONF := device/samsung/mint/bluetooth/libbt_vndcfg.txt
 
 ## Wi-Fi
 BOARD_WLAN_DEVICE := bcmdhd

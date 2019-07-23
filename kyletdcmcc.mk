@@ -39,8 +39,6 @@ PRODUCT_PACKAGES += \
     libnetcmdiface
 
 PRODUCT_PACKAGES += \
-    libvbeffect \
-    libvbpga \
     libtinyalsa \
     tinymix \
     audio.a2dp.default \
@@ -54,7 +52,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
     SamsungServiceMode \
-    CMAccount \
+    CMAccount
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -72,11 +70,15 @@ PRODUCT_COPY_FILES += \
     device/samsung/kyletdcmcc/boot/bin/charge:root/bin/charge \
     device/samsung/kyletdcmcc/boot/bin/vcharged:root/bin/vcharged \
     device/samsung/kyletdcmcc/boot/init.usb.rc:root/init.usb.rc \
-    device/samsung/kyletdcmcc/boot/init.bt.rc:root/init.bt.rc \
     device/samsung/kyletdcmcc/boot/init.trace.rc:root/init.trace.rc \
     device/samsung/kyletdcmcc/boot/fstab.sp8810:root/fstab.sp8810 \
     device/samsung/kyletdcmcc/boot/modem_control:root/modem_control \
-    device/samsung/kyletdcmcc/boot/lpm.rc:root/lpm.rc
+    device/samsung/kyletdcmcc/boot/lpm.rc:root/lpm.rc \
+    device/samsung/kyletdcmcc/boot/init.bt.rc:root/init.bt.rc \
+
+# Softlink sh
+$(shell mkdir -p $(LOCAL_PATH)/../../../out/target/product/kyletdcmcc/recovery/root/system/bin)
+$(shell ln -sf -t $(LOCAL_PATH)/../../../out/target/product/kyletdcmcc/recovery/root/system/bin ../../sbin/sh)
 
 # prebuilt kernel modules
 MOD_TGT := /system/lib/modules
@@ -128,7 +130,6 @@ $(LOCAL_PATH)/prebuilts/lib/libnvaccessor.so:system/lib/libnvaccessor.so \
 
 PRODUCT_COPY_FILES += \
 $(LOCAL_PATH)/prebuilts/bin/at_distributor:system/bin/at_distributor \
-$(LOCAL_PATH)/prebuilts/bin/bluetoothd:system/bin/bluetoothd \
 $(LOCAL_PATH)/prebuilts/bin/engappclient:system/bin/engappclient \
 $(LOCAL_PATH)/prebuilts/bin/engmodemclient:system/bin/engmodemclient \
 $(LOCAL_PATH)/prebuilts/bin/engpcclient:system/bin/engpcclient \
@@ -168,8 +169,9 @@ $(LOCAL_PATH)/prebuilts/lib/libcontrolcsc.so:system/lib/libcontrolcsc.so \
 $(LOCAL_PATH)/prebuilts/lib/libvolumemanager.so:system/lib/libvolumemanager.so \
 $(LOCAL_PATH)/prebuilts/lib/libvolumemanager_jni.so:system/lib/libvolumemanager_jni.so \
 $(LOCAL_PATH)/prebuilts/lib/libWVStreamControlAPI_L3.so:system/lib/libWVStreamControlAPI_L3.so \
-$(LOCAL_PATH)/prebuilts/lib/libvolumeprofilesystem.so:system/lib/libvolumeprofilesystem.so
-
+$(LOCAL_PATH)/prebuilts/lib/libvolumeprofilesystem.so:system/lib/libvolumeprofilesystem.so \
+$(LOCAL_PATH)/prebuilts/lib/libvbpga.so:system/lib/libvbpga.so \
+$(LOCAL_PATH)/prebuilts/lib/libvbeffect.so:system/lib/libvbeffect.so
 
 # Audio configs
 PRODUCT_COPY_FILES += \
@@ -177,7 +179,6 @@ $(LOCAL_PATH)/prebuilts/etc/tiny_hw.xml:system/etc/tiny_hw.xml \
 $(LOCAL_PATH)/prebuilts/etc/tinyucm.conf:system/etc/tinyucm.conf \
 $(LOCAL_PATH)/prebuilts/etc/Volume.db:system/etc/Volume.db \
 $(LOCAL_PATH)/prebuilts/etc/audio_para:system/etc/audio_para \
-$(LOCAL_PATH)/prebuilts/etc/vbc_eq:system/etc/vbc_eq \
 $(LOCAL_PATH)/prebuilts/etc/codec_pga.xml:system/etc/codec_pga.xml \
 $(LOCAL_PATH)/prebuilts/etc/audio_policy.conf:system/etc/audio_policy.conf \
 $(LOCAL_PATH)/prebuilts/etc/devicevolume.xml:system/etc/devicevolume.xml \
@@ -268,6 +269,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilts/lib/libsecril-client.so:system/lib/libsecril-client.so \
     $(LOCAL_PATH)/prebuilts/lib/libsecnativefeature.so:system/lib/libsecnativefeature.so \
     $(LOCAL_PATH)/prebuilts/bin/rild_sp:system/bin/rild_sp \
+    $(LOCAL_PATH)/prebuilts/bin/rild:system/bin/rild \
+    $(LOCAL_PATH)/prebuilts/lib/libril_sp.so:system/lib/libril_sp.so \
+    $(LOCAL_PATH)/prebuilts/lib/libreference-ril_sp.so:system/lib/libreference-ril_sp.so \
     $(LOCAL_PATH)/prebuilts/lib/libril.so:system/lib/libril.so \
     $(LOCAL_PATH)/prebuilts/lib/libreference-ril.so:system/lib/libreference-ril.so \
     $(LOCAL_PATH)/prebuilts/lib/libomission_avoidance.so:system/lib/libomission_avoidance.so \
@@ -281,11 +285,21 @@ PRODUCT_COPY_FILES += \
     device/samsung/kyletdcmcc/prebuilts/etc/wifi/bcmdhd_sta.bin:system/etc/wifi/bcmdhd_sta.bin \
     device/samsung/kyletdcmcc/prebuilts/etc/wifi/nvram_mfg.txt:system/etc/wifi/nvram_mfg.txt \
     device/samsung/kyletdcmcc/prebuilts/etc/wifi/nvram_net.txt:system/etc/wifi/nvram_net.txt \
-    device/samsung/kyletdcmcc/prebuilts/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
 
 # Bluetooth
 PRODUCT_COPY_FILES += \
     device/samsung/kyletdcmcc/prebuilts/bin/BCM4330B1_002.001.003.0693.0000_Samsung_Cori-vol25-TEST-ONLY.hcd:system/bin/BCM4330B1_002.001.003.0693.0000_Samsung_Cori-vol25-TEST-ONLY.hcd \
-
+    device/samsung/kyletdcmcc/prebuilts/bin/bcm_dut:system/bin/bcm_dut \
+    device/samsung/kyletdcmcc/prebuilts/bin/brcm_patchram_plus:system/bin/brcm_patchram_plus \
+    device/samsung/kyletdcmcc/prebuilts/bin/bluetoothd:system/bin/bluetoothd \
+    device/samsung/kyletdcmcc/prebuilts/lib/libbluedroid.so:system/lib/libbluedroid.so \
+    device/samsung/kyletdcmcc/prebuilts/lib/libbluetoothd.so:system/lib/libbluetoothd.so \
+    device/samsung/kyletdcmcc/prebuilts/lib/libbluetooth.so:system/lib/libbluetooth.so \
+    device/samsung/kyletdcmcc/prebuilts/lib/bluez-plugin/audio.so:system/lib/bluez-plugin/audio.so \
+    device/samsung/kyletdcmcc/prebuilts/lib/bluez-plugin/input.so:system/lib/bluez-plugin/input.so \
+    device/samsung/kyletdcmcc/prebuilts/lib/bluez-plugin/network.so:system/lib/bluez-plugin/network.so \
+    device/samsung/kyletdcmcc/prebuilts/lib/bluez-plugin/bluetooth-health.so:system/lib/bluez-plugin/bluetooth-health.so
+    
+    
 
 $(call inherit-product, device/samsung/kyletdcmcc/phone-hdpi-768-dalvik-heap.mk)

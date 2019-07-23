@@ -93,7 +93,7 @@ on boot
 #permissions for bluetooth
     setprop ro.bt.bdaddr_path "/efs/bluetooth/bt_addr"
     chown bluetooth bluetooth ro.bt.bdaddr_path
-    chmod 666 /dev/ttyS0
+    chmod 777 /dev/ttyS0
     chmod 660 /proc/bluetooth/sleep/proto
     chmod 660 /sys/class/rfkill/rfkill0/state
     chmod 660 /sys/class/rfkill/rfkill0/type
@@ -228,31 +228,31 @@ service calibrationinit /system/bin/calibration_init
     class main
     oneshot
 
-#service vcharged /bin/vcharged
-#    class core
-#    user system
-#    oneshot
+service vcharged /bin/vcharged
+    class core
+    user system
+    oneshot
 
 service charge /bin/charge
     class charger
     user root
     oneshot
     
-#rild service
-#service ril-daemon /system/bin/rild_sp  -l /system/lib/libreference-ril_sp.so -- -n 0
-#    class main
-#    socket rild stream 660 root radio
-#    socket rild-debug stream 660 radio system
-#    user root
-#    group radio cache inet misc audio sdcard_rw log
+rild service
+service ril-daemon /system/bin/rild_sp  -l /system/lib/libreference-ril_sp.so -- -n 0
+    class main
+    socket rild stream 660 root radio
+    socket rild-debug stream 660 radio system
+    user root
+    group radio cache inet misc audio sdcard_rw log
 
-#service ril-daemon1 /system/bin/rild_sp  -l /system/lib/libreference-ril_sp.so -- -n 1
-#    class main
-#    socket rild1 stream 660 root radio
-#    socket rild-debug1 stream 660 radio system
-#    disabled
-#    user root
-#    group radio cache inet misc audio sdcard_rw log
+service ril-daemon1 /system/bin/rild_sp  -l /system/lib/libreference-ril_sp.so -- -n 1
+    class main
+    socket rild1 stream 660 root radio
+    socket rild-debug1 stream 660 radio system
+    disabled
+    user root
+    group radio cache inet misc audio sdcard_rw log
 
 service ril-daemon /system/bin/rild
     class core

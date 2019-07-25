@@ -49,8 +49,8 @@ COMMON_GLOBAL_CFLAGS += -DSPRD_HARDWARE
 BOARD_KERNEL_CMDLINE := console=ttyS1,115200n8
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
-TARGET_KERNEL_SOURCE := kernel/samsung/mint/
-TARGET_KERNEL_CONFIG := cyanogenmod_mint_defconfig
+TARGET_KERNEL_SOURCE := kernel/samsung/kyletdcmcc/
+TARGET_KERNEL_CONFIG := kyletd-vlx_defconfig
 #TARGET_PREBUILT_KERNEL := device/samsung/mint/kernel
 BOARD_USES_UNCOMPRESSED_BOOT := true
 TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
@@ -99,7 +99,7 @@ BOARD_EGL_CFG := device/samsung/mint/egl/egl.cfg
 BOARD_EGL_NEEDS_LEGACY_FB := true
 
 # Camera
-USE_CAMERA_STUB := true
+USE_CAMERA_STUB := false
 COMMON_GLOBAL_CFLAGS += -DMR0_CAMERA_BLOB
 
 # Bluetooth

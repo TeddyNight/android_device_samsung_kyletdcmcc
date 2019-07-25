@@ -131,13 +131,29 @@ PRODUCT_PACKAGES += \
     sensors.sc8810
 
 # Camera
-PRODUCT_PACKAGES += \
-    camera.sc8810
+#PRODUCT_PACKAGES += \
+#    camera.sc8810
 
 # Display
-PRODUCT_PACKAGES += \
-    hwcomposer.sc8810\
-    gralloc.sc8810
+#PRODUCT_PACKAGES += \
+#    hwcomposer.sc8810\
+#    gralloc.sc8810
+
+# Egl
+PRODUCT_COPY_FILES += \
+    device/samsung/kyletdcmcc/prebuilts/lib/egl/libEGL_mali.so:system/lib/egl/libEGL_mali.so \
+    device/samsung/kyletdcmcc/prebuilts/lib/egl/libGLES_android.so:system/lib/egl/libGLES_android.so \
+    device/samsung/kyletdcmcc/prebuilts/lib/egl/libGLESv1_CM_mali.so:system/lib/egl/libGLESv1_CM_mali.so \
+    device/samsung/kyletdcmcc/prebuilts/lib/egl/libGLESv2_mali.so:system/lib/egl/libGLESv2_mali.so \
+    device/samsung/kyletdcmcc/prebuilts/lib/libMali.so:system/lib/libMali.so \
+    device/samsung/kyletdcmcc/prebuilts/lib/libUMP.so:system/lib/libUMP.so
+
+# prebuilt kernel modules
+MOD_TGT := /system/lib/modules
+MOD_SRC := device/samsung/kyletdcmcc/prebuilts/lib/modules
+PRODUCT_COPY_FILES += \
+        $(MOD_SRC)/mali.ko:$(MOD_TGT)/mali.ko \
+        $(MOD_SRC)/ump.ko:$(MOD_TGT)/ump.ko
 
 
 # Set default USB interface
@@ -162,12 +178,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
-    
-#WiFi
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/wifi/nvram_mfg.txt:system/etc/wifi/nvram_mfg.txt \
-    $(LOCAL_PATH)/wifi/nvram_net.txt:system/etc/wifi/nvram_net.txt
-
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -198,7 +208,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.call_ring=0 
 
 
-## LDPI assets
+## HDPI assets
 PRODUCT_AAPT_CONFIG := normal hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 #$(call inherit-product, device/ldpi-common/ldpi.mk)

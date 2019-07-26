@@ -17,19 +17,19 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 ## (2) Also get non-open-source specific aspects if available
-$(call inherit-product-if-exists, vendor/samsung/mint/mint-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/kyletdcmcc/kyletdcmcc-vendor.mk)
 
 # Use the Dalvik VM specific for devices with 512 MB of RAM
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 
 ## overlays
-DEVICE_PACKAGE_OVERLAYS += device/samsung/mint/overlay
+DEVICE_PACKAGE_OVERLAYS += device/samsung/kyletdcmcc/overlay
 
-LOCAL_PATH := device/samsung/mint
+LOCAL_PATH := device/samsung/kyletdcmcc
 
 # Softlink sh
-$(shell mkdir -p $(LOCAL_PATH)/../../../out/target/product/mint/recovery/root/system/bin)
-$(shell ln -sf -t $(LOCAL_PATH)/../../../out/target/product/mint/recovery/root/system/bin ../../sbin/sh)
+$(shell mkdir -p $(LOCAL_PATH)/../../../out/target/product/kyletdcmcc/recovery/root/system/bin)
+$(shell ln -sf -t $(LOCAL_PATH)/../../../out/target/product/kyletdcmcc/recovery/root/system/bin ../../sbin/sh)
 
 # Init Files
 PRODUCT_COPY_FILES += \

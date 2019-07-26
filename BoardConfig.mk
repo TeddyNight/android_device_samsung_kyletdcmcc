@@ -37,7 +37,7 @@ TARGET_GLOBAL_CFLAGS += -mtune=cortex-a5 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a5 -mfpu=neon -mfloat-abi=softfp
 
 # Board
-TARGET_BOOTLOADER_BOARD_NAME := mint
+TARGET_BOOTLOADER_BOARD_NAME := kyletdcmcc
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 
@@ -51,7 +51,7 @@ BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 TARGET_KERNEL_SOURCE := kernel/samsung/kyletdcmcc/
 TARGET_KERNEL_CONFIG := kyletd-vlx_defconfig
-#TARGET_PREBUILT_KERNEL := device/samsung/mint/kernel
+#TARGET_PREBUILT_KERNEL := device/samsung/kyletdcmcc/kernel
 BOARD_USES_UNCOMPRESSED_BOOT := true
 TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
 
@@ -75,11 +75,11 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 
 
 ## Recovery
-TARGET_RECOVERY_INITRC := device/samsung/mint/recovery/init.rc
-TARGET_RECOVERY_FSTAB := device/samsung/mint/recovery/recovery.fstab
+TARGET_RECOVERY_INITRC := device/samsung/kyletdcmcc/recovery/init.rc
+TARGET_RECOVERY_FSTAB := device/samsung/kyletdcmcc/recovery/recovery.fstab
 TARGET_USERIMAGES_USE_EXT4 := true
-BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/mint/recovery/graphics.c
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/mint/recovery/recovery_keys.c
+BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/kyletdcmcc/recovery/graphics.c
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/kyletdcmcc/recovery/recovery_keys.c
 BOARD_HAS_SDCARD_INTERNAL := true
 BOARD_HAS_DOWNLOAD_MODE := true
 BOARD_USES_MMCUTILS := true
@@ -95,7 +95,7 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/dwc_otg.0/gadget/lun0/
 
 # Graphics
 USE_OPENGL_RENDERER := true
-BOARD_EGL_CFG := device/samsung/mint/egl/egl.cfg
+BOARD_EGL_CFG := device/samsung/kyletdcmcc/egl/egl.cfg
 BOARD_EGL_NEEDS_LEGACY_FB := true
 
 # Camera
@@ -105,8 +105,8 @@ COMMON_GLOBAL_CFLAGS += -DMR0_CAMERA_BLOB
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/mint/bluetooth
-BOARD_BLUEDROID_VENDOR_CONF := device/samsung/mint/bluetooth/libbt_vndcfg.txt
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/kyletdcmcc/bluetooth
+BOARD_BLUEDROID_VENDOR_CONF := device/samsung/kyletdcmcc/bluetooth/libbt_vndcfg.txt
 
 # Connectivity - Wi-Fi
 BOARD_WLAN_DEVICE                := bcmdhd
@@ -132,7 +132,7 @@ BOARD_LEGACY_NL80211_STA_EVENTS := true
 BOARD_NO_APSME_ATTR := true
 
 # RIL
-BOARD_RIL_CLASS := ../../../device/samsung/mint/ril/
+BOARD_RIL_CLASS := ../../../device/samsung/kyletdcmcc/ril/
 BOARD_MOBILEDATA_INTERFACE_NAME := "rmnet0"
 BOARD_RIL_NO_CELLINFOLIST := true
 

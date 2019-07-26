@@ -16,11 +16,11 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit device specific files
-$(call inherit-product, device/samsung/mint/device.mk)
+$(call inherit-product, device/samsung/kyletdcmcc/device.mk)
 
 # Overrides
-PRODUCT_NAME := full_mint
-PRODUCT_DEVICE := mint
+PRODUCT_NAME := full_kyletdcmcc
+PRODUCT_DEVICE := kyletdcmcc
 PRODUCT_BRAND := samsung
 PRODUCT_MODEL := GT-S7568
 PRODUCT_MANUFACTURER := Samsung

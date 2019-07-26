@@ -2,11 +2,11 @@
 
 
 
-Device Tree for Samsung Galaxy Star
+Device Tree for Samsung Galaxy S7568
 Thanks - Unjustified Dev & Doc
 
 
-![Samsung Galaxy Star](http://i3.hexunimg.cn/2013-03-18/152200816.jpg)
+![Samsung Galaxy S7568](http://i3.hexunimg.cn/2013-03-18/152200816.jpg)
 
 
 ###Specifications
@@ -23,3 +23,18 @@ Thanks - Unjustified Dev & Doc
 **Internal Memory** - 4GB total
 
 **RAM** - 768MB
+
+###Status
+
+
+#####Working
+**Camera** - Recording not work well,crash sometimes
+**Baseband**
+**Audio** - Both Record and output
+**Wifi and Bluetooth**
+**Light**
+**Storage**
+
+#####Not Working
+**Phone Call**
+

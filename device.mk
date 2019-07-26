@@ -23,7 +23,7 @@ $(call inherit-product-if-exists, vendor/samsung/mint/mint-vendor.mk)
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 
 ## overlays
-#DEVICE_PACKAGE_OVERLAYS += device/samsung/mint/overlay
+DEVICE_PACKAGE_OVERLAYS += device/samsung/mint/overlay
 
 LOCAL_PATH := device/samsung/mint
 
@@ -79,12 +79,15 @@ frameworks/native/data/etc/android.hardware.camera.xml:system/etc/permissions/an
 # Note that the only such settings should be the ones that are too low-level to
 # be reachable from resources or other mechanisms.
 PRODUCT_PROPERTY_OVERRIDES += \
-    wifi.supplicant_scan_interval=150 
+    wifi.supplicant_scan_interval=180 
 
 #Wifi
 PRODUCT_PACKAGES += \
-dhcpcd.conf \
-wpa_supplicant
+	dhcpcd.conf \
+	wpa_supplicant \
+	hostapd \
+	wpa_supplicant.conf \
+	libnetcmdiface
 
 
 # Audio
@@ -120,7 +123,7 @@ PRODUCT_PROPERTY_OVERRIDES := \
 	keyguard.no_require_sim=true \
 	ro.com.android.dataroaming=false \
 	persist.msms.phone_count=2 \
-	persist.sys.sprd.modemreset=1
+	persist.sys.sprd.modemreset=0
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -139,14 +142,6 @@ PRODUCT_PACKAGES += \
 #    hwcomposer.sc8810\
 #    gralloc.sc8810
 
-# Egl
-PRODUCT_COPY_FILES += \
-    device/samsung/kyletdcmcc/prebuilts/lib/egl/libEGL_mali.so:system/lib/egl/libEGL_mali.so \
-    device/samsung/kyletdcmcc/prebuilts/lib/egl/libGLES_android.so:system/lib/egl/libGLES_android.so \
-    device/samsung/kyletdcmcc/prebuilts/lib/egl/libGLESv1_CM_mali.so:system/lib/egl/libGLESv1_CM_mali.so \
-    device/samsung/kyletdcmcc/prebuilts/lib/egl/libGLESv2_mali.so:system/lib/egl/libGLESv2_mali.so \
-    device/samsung/kyletdcmcc/prebuilts/lib/libMali.so:system/lib/libMali.so \
-    device/samsung/kyletdcmcc/prebuilts/lib/libUMP.so:system/lib/libUMP.so
 
 # prebuilt kernel modules
 MOD_TGT := /system/lib/modules
@@ -168,7 +163,6 @@ PRODUCT_PACKAGES += \
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-    frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
@@ -178,6 +172,12 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
+
+#WiFi
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/wifi/nvram_mfg.txt:system/etc/wifi/nvram_mfg.txt \
+    $(LOCAL_PATH)/wifi/nvram_net.txt:system/etc/wifi/nvram_net.txt
+
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -203,6 +203,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
     mobiledata.interfaces=rmnet0 \
     ro.zygote.disable_gl_preload=true \
+    ro.telephony.ril_class=SamsungSPRDRIL \
+    dalvik.vm.heapgrowthlimit=46m \
+    dalvik.vm.heapsize=92m \
     persist.radio.multisim.config=none \
     ro.telephony.call_ring.multiple=0 \
     ro.telephony.call_ring=0 
@@ -214,7 +217,6 @@ PRODUCT_AAPT_PREF_CONFIG := hdpi
 #$(call inherit-product, device/ldpi-common/ldpi.mk)
 
 #Wifi
-$(call inherit-product, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Boot animation

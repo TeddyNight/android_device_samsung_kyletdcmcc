@@ -2,31 +2,25 @@ import init.sp8810.usb.rc
 
 on init
 
-     mkdir /mnt/shell/emulated 0700 shell shell
-     mkdir /storage 0550 system sdcard_r
-     
-     mkdir /storage/emulated 0555 root root
+     stop ril-daemon
 
-    # External storage directories
-     mkdir /storage/sdcard1 0000 system system
-     mkdir /storage/usbdisk0 0000 system system
- 
+     # See storage config details at http://source.android.com/tech/storage/
+    mkdir /mnt/shell/emulated 0700 shell shell
+    mkdir /storage/emulated 0555 root root
+
     export EXTERNAL_STORAGE /storage/emulated/legacy
     export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
     export EMULATED_STORAGE_TARGET /storage/emulated
-    export SECONDARY_STORAGE /storage/sdcard1 
 
-     # For backwards compatibility
-     symlink /storage/emulated/legacy /sdcard
-     symlink /storage/emulated/legacy /mnt/sdcard
-     symlink /storage/emulated/legacy /storage/sdcard0
-     symlink /storage/sdcard1 /extSdCard
-     symlink /storage/sdcard1 /mnt/extSdCard
-     symlink /storage/sdcard1 /external_sd
+    # Support legacy paths
+    symlink /storage/emulated/legacy /sdcard
+    symlink /storage/emulated/legacy /mnt/sdcard
+    symlink /storage/emulated/legacy /storage/sdcard0
+    symlink /mnt/shell/emulated/0 /storage/emulated/legacy
 
-    # sd-ext
-    mkdir /sd-ext 0771 system system
-    export SD_EXT_DIRECTORY /sd-ext
+    export SECONDARY_STORAGE /storage/sdcard1
+    mkdir /storage/sdcard1 0000 system system
+    symlink /storage/sdcard1 /mnt/external_sd
 
    
     mkdir /efs 0771 radio system
@@ -281,6 +275,7 @@ service nvm_daemon /system/bin/nvm_daemon
     group system radio shell
     oneshot
 
+
 # Start samsung daemon.
 service ss_daemon /system/bin/ss_daemon
     class main
@@ -333,26 +328,34 @@ service phoneserver /system/bin/phoneserver
     group system radio shell
     disabled
     oneshot
+    
+service phoneserver_2sim /system/bin/phoneserver_2sim
+    class core
+    user system
+    group system radio shell
+    disabled
+    oneshot
 
 service calibrationinit /system/bin/calibration_init
     class main
     oneshot
 
+
 # rild service
-service ril-daemon2 /system/bin/rild_sp  -l /system/lib/libreference-ril.so -- -n 1
-    class main
-    socket rild1 stream 660 root radio
-    socket rild-debug1 stream 660 radio system
-    user root
-    group radio cache inet misc audio sdcard_rw log sdcard_r
 
-
-service ril-daemon /system/bin/rild_sp  -l /system/lib/libreference-ril.so -- -n 0
-    class main
+service sp-ril-daemon /system/bin/rild_sp  -l /system/lib/libreference-ril.so -- -n 0
+    class core
     socket rild stream 660 root radio
     socket rild-debug stream 660 radio system
     user root
-    group radio cache inet misc audio sdcard_rw log sdcard_r
+    group radio cache inet misc audio sdcard_rw log
+    
+service sp-ril-daemon2 /system/bin/rild_sp  -l /system/lib/libreference-ril.so -- -n 1
+    class core
+    socket rild1 stream 660 root radio
+    socket rild-debug1 stream 660 radio system
+    user root
+    group radio cache inet misc audio sdcard_rw log
 
 
 # create virtual SD card at /storage/sdcard0, based on the /data/media directory

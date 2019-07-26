@@ -23,10 +23,6 @@
         <item>"wifi_p2p,13,1,0,-1,true"</item>
     </string-array>
 
-    <!-- Boolean indicating whether the wifi chipset has p2p support -->
-    <add-resource>
-    	<bool name="config_wifi_p2p_support">true</bool>
-    </add-resource>
 
     <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
     <bool name="config_wifi_dual_band_support">true</bool>

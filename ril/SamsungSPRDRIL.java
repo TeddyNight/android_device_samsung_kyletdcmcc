@@ -66,29 +66,7 @@ public class SamsungSPRDRIL extends RIL implements CommandsInterface {
         if (RILJ_LOGD) riljLog(rr.serialString() + "> " + requestToString(rr.mRequest));
 
         send(rr);
-    }
-
-    public Object GetIMEI (Parcel p) {
-    	Object ret;
-	ret =  responseString(p);
-	if(ret.toString() != null)
-		riljLog("IMEI : Read from Parcel " + ret.toString());
-	else
-		riljLog("IMEI : Read from Parcel returns null");
-	//Now we will go dirty :3
-	//String str;
-	File file = new File("efs/imei/imeino1");
-	try {
-		BufferedReader br = new BufferedReader(new FileReader(file));
-            	String str = br.readLine();
-		riljLog("IMEI : Dirty Read " + str);
-		return str;
-	} catch (IOException e)	{
-	}
-	riljLog("IMEI : Dirty Read returns null o.O");
-	return null;
-	
-    }
+    }    
 
     protected void
     processSolicited (Parcel p) {
@@ -164,7 +142,7 @@ public class SamsungSPRDRIL extends RIL implements CommandsInterface {
             case RIL_REQUEST_QUERY_CALL_WAITING: ret =  responseInts(p); break;
             case RIL_REQUEST_SET_CALL_WAITING: ret =  responseVoid(p); break;
             case RIL_REQUEST_SMS_ACKNOWLEDGE: ret =  responseVoid(p); break;
-            case RIL_REQUEST_GET_IMEI: ret =  GetIMEI(p); break;
+            case RIL_REQUEST_GET_IMEI: ret =  responseString(p); break;
             case RIL_REQUEST_GET_IMEISV: ret =  responseString(p); break;
             case RIL_REQUEST_ANSWER: ret =  responseVoid(p); break;
             case RIL_REQUEST_DEACTIVATE_DATA_CALL: ret =  responseVoid(p); break;
@@ -294,72 +272,22 @@ public class SamsungSPRDRIL extends RIL implements CommandsInterface {
     }
 
     @Override
-    protected Object
-    responseCallList(Parcel p) {
-        int num;
-        int voiceSettings;
-        ArrayList<DriverCall> response;
-        DriverCall dc;
+    public void
+    sendUSSD (String ussdString, Message response) {
+        RILRequest rr
+                = RILRequest.obtain(RIL_REQUEST_SEND_USSD, response);
 
-        num = p.readInt();
-        response = new ArrayList<DriverCall>(num);
-
-        for (int i = 0 ; i < num ; i++) {
-            dc = new DriverCall();
-
-            dc.state = DriverCall.stateFromCLCC(p.readInt());
-            dc.index = p.readInt();
-            dc.TOA = p.readInt();
-            dc.isMpty = (0 != p.readInt());
-            dc.isMT = (0 != p.readInt());
-            dc.als = p.readInt();
-            voiceSettings = p.readInt();
-            dc.isVoice = (0 == voiceSettings) ? false : true;
-            //Some Samsung magic data for Videocalls
-            // hack taken from smdk4210ril class
-            voiceSettings = p.readInt();
-            //printing it to cosole for later investigation
-            Log.d(LOG_TAG, "Samsung magic = " + voiceSettings);
-            dc.isVoicePrivacy = (0 != p.readInt());
-            dc.number = p.readString();
-            int np = p.readInt();
-            dc.numberPresentation = DriverCall.presentationFromCLIP(np);
-            dc.name = p.readString();
-            dc.namePresentation = p.readInt();
-            int uusInfoPresent = p.readInt();
-            if (uusInfoPresent == 1) {
-                dc.uusInfo = new UUSInfo();
-                dc.uusInfo.setType(p.readInt());
-                dc.uusInfo.setDcs(p.readInt());
-                byte[] userData = p.createByteArray();
-                dc.uusInfo.setUserData(userData);
-                riljLogv(String.format("Incoming UUS : type=%d, dcs=%d, length=%d",
-                                       dc.uusInfo.getType(), dc.uusInfo.getDcs(),
-                                       dc.uusInfo.getUserData().length));
-                riljLogv("Incoming UUS : data (string)="
-                         + new String(dc.uusInfo.getUserData()));
-                riljLogv("Incoming UUS : data (hex): "
-                         + IccUtils.bytesToHexString(dc.uusInfo.getUserData()));
-            } else {
-                riljLogv("Incoming UUS : NOT present!");
-            }
-
-            // Make sure there's a leading + on addresses with a TOA of 145
-            dc.number = PhoneNumberUtils.stringFromStringAndTOA(dc.number, dc.TOA);
-
-            response.add(dc);
-
-            if (dc.isVoicePrivacy) {
-                mVoicePrivacyOnRegistrants.notifyRegistrants();
-                riljLog("InCall VoicePrivacy is enabled");
-            } else {
-                mVoicePrivacyOffRegistrants.notifyRegistrants();
-                riljLog("InCall VoicePrivacy is disabled");
-            }
+        byte[] ussdByte = null;
+        try {
+            ussdByte = GsmAlphabet.stringToGsm8BitPacked(ussdString);
+        } catch(Exception e) {
+            if (RILJ_LOGD) riljLog("Exception e = " + e);
         }
-
-        Collections.sort(response);
-
-        return response;
+        String sendData = IccUtils.bytesToHexString(ussdByte);
+        if (RILJ_LOGD) riljLog("USSD sendData = " + sendData);
+        rr.mp.writeString(sendData);
+        send(rr);
     }
+    
+
 }

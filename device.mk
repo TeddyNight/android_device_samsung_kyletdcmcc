@@ -142,15 +142,6 @@ PRODUCT_PACKAGES += \
 #    hwcomposer.sc8810\
 #    gralloc.sc8810
 
-
-# prebuilt kernel modules
-MOD_TGT := /system/lib/modules
-MOD_SRC := device/samsung/kyletdcmcc/prebuilts/lib/modules
-PRODUCT_COPY_FILES += \
-        $(MOD_SRC)/mali.ko:$(MOD_TGT)/mali.ko \
-        $(MOD_SRC)/ump.ko:$(MOD_TGT)/ump.ko
-
-
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	persist.sys.usb.config=mtp

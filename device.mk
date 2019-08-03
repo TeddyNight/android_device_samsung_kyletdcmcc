@@ -129,18 +129,9 @@ PRODUCT_PROPERTY_OVERRIDES := \
 PRODUCT_PACKAGES += \
     lights.sc8810
 
-# Sensors
-PRODUCT_PACKAGES += \
-    sensors.sc8810
-
-# Camera
-#PRODUCT_PACKAGES += \
-#    camera.sc8810
-
 # Display
-#PRODUCT_PACKAGES += \
-#    hwcomposer.sc8810\
-#    gralloc.sc8810
+PRODUCT_PACKAGES += \
+    libUMP
 
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \

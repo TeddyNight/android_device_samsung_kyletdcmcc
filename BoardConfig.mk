@@ -132,7 +132,7 @@ BOARD_LEGACY_NL80211_STA_EVENTS := true
 BOARD_NO_APSME_ATTR := true
 
 # RIL
-BOARD_RIL_CLASS := ../../../device/samsung/kyletdcmcc/ril/
+#BOARD_RIL_CLASS := ../../../device/samsung/kyletdcmcc/ril/
 BOARD_MOBILEDATA_INTERFACE_NAME := "rmnet0"
 BOARD_RIL_NO_CELLINFOLIST := true
 

@@ -185,13 +185,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
     mobiledata.interfaces=rmnet0 \
     ro.zygote.disable_gl_preload=true \
-    ro.telephony.ril_class=SamsungSPRDRIL \
     dalvik.vm.heapgrowthlimit=46m \
     dalvik.vm.heapsize=92m \
     persist.radio.multisim.config=none \
     ro.telephony.call_ring.multiple=0 \
     ro.telephony.call_ring=0 
-
 
 ## HDPI assets
 PRODUCT_AAPT_CONFIG := normal hdpi

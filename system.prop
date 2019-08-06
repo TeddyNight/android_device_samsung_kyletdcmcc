@@ -8,6 +8,10 @@ ro.sf.lcd_density=240
 # Miminum brightness
 ro.lcd_min_brightness=20
 
+# Ril
+rild.libpath=/system/lib/libsec-ril.so
+rild.libargs=-d /dev/ttyS0
+
 ro.product.hardware=SS
 persist.sys.dataprefer.simid=0
 ro.secure=0

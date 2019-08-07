@@ -1,12 +1,15 @@
 #
-# system.prop for mint
+# system.prop for kyletdcmcc
 #
 
-ro.sf.lcd_density=120
+ro.sf.lcd_density=240
 ro.product.hardware=SS
 
 ro.lcd_min_brightness=20
 
+# Ril
+rild.libpath=/system/lib/libsec-ril.so
+rild.libargs=-d /dev/ttyS0
 
 persist.sys.storage_preload=1
 

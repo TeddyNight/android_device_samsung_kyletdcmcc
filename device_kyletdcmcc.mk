@@ -20,19 +20,19 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, device/samsung/sprd-common/device.mk)
 
 ## (2) Also get non-open-source specific aspects if available
-$(call inherit-product-if-exists, vendor/samsung/mint2g/mint2g-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/kyletdcmcc/kyletdcmcc-vendor.mk)
 
-# Use the Dalvik VM specific for devices with 512 MB of RAM
-$(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
+# Use the Dalvik VM specific for devices with 768 MB of RAM
+$(call inherit-product, device/samsung/kyletdcmcc/phone-hdpi-768-dalvik-heap.mk)
 
 ## overlays
-DEVICE_PACKAGE_OVERLAYS += device/samsung/mint2g/overlay
+DEVICE_PACKAGE_OVERLAYS += device/samsung/kyletdcmcc/overlay
 
-LOCAL_PATH := device/samsung/mint2g
+LOCAL_PATH := device/samsung/kyletdcmcc
 
 # Softlink sh
-$(shell mkdir -p $(LOCAL_PATH)/../../../out/target/product/mint/recovery/root/system/bin)
-$(shell ln -sf -t $(LOCAL_PATH)/../../../out/target/product/mint/recovery/root/system/bin ../../sbin/sh)
+$(shell mkdir -p $(LOCAL_PATH)/../../../out/target/product/kyletdcmcc/recovery/root/system/bin)
+$(shell ln -sf -t $(LOCAL_PATH)/../../../out/target/product/kyletdcmcc/recovery/root/system/bin ../../sbin/sh)
 
 # Init Files
 PRODUCT_COPY_FILES += \
@@ -96,15 +96,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.checkjni=false \
     wifi.interface=wlan0 \
     ro.zygote.disable_gl_preload=true \
-    persist.msms.phone_count=2 \
-    persist.radio.multisim.config=dsds \
     ro.telephony.call_ring.multiple=0 \
     dalvik.vm.heapsize=92m \
     dalvik.vm.heapgrowthlimit=46m \
-    ro.telephony.ril_class=SamsungMint2GRIL \
-    ro.ril.telephony.mqanelements=5 \
-    ro.telephony.call_ring=0 
-    
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp \
@@ -115,5 +109,5 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 $(call inherit-product, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
 
 # Boot animation
-TARGET_SCREEN_HEIGHT := 320
-TARGET_SCREEN_WIDTH := 240
+TARGET_SCREEN_HEIGHT := 800
+TARGET_SCREEN_WIDTH := 480

@@ -1,8 +1,6 @@
 import init.sp8810.usb.rc
 
 on init
-
-	stop ril-daemon
 	
 # See storage config details at http://source.android.com/tech/storage/
 	mkdir /mnt/shell/emulated 0700 shell shell
@@ -252,9 +250,9 @@ on boot
 
 # SEC_PRODUCT_FEATURE_COMMON_USE_MULTISIM
 #   simslot 1
-#   setprop ro.multisim.simslotcount 1  
+   setprop ro.multisim.simslotcount 1  
 #   simslot 2
-    setprop ro.multisim.simslotcount 2
+#   setprop ro.multisim.simslotcount 2
 #   simslot 3
 #   setprop ro.multisim.simslotcount 3
 

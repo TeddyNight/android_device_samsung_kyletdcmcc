@@ -22,7 +22,7 @@
 
 -include device/samsung/sprd-common/BoardConfigCommon.mk
 
-TARGET_OTA_ASSERT_DEVICE := mint,mint2g,GT-S5282,GT-S5280
+TARGET_OTA_ASSERT_DEVICE := kyletdcmcc,kyletdcmcc,GT-S7568
 
 # Architecture
 TARGET_ARCH := arm
@@ -36,7 +36,7 @@ TARGET_CPU_SMP := true
 #TARGET_CORTEX_CACHE_LINE_32 := true
 
 # Board
-TARGET_BOOTLOADER_BOARD_NAME := mint2g
+TARGET_BOOTLOADER_BOARD_NAME := kyletdcmcc
 
 # Platform
 TARGET_BOARD_PLATFORM := sc8810
@@ -46,8 +46,10 @@ COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 BOARD_KERNEL_CMDLINE := console=ttyS1,115200n8 androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
-TARGET_KERNEL_SOURCE := kernel/samsung/mint2g
-TARGET_KERNEL_CONFIG := cyanogenmod_mint_defconfig
+TARGET_KERNEL_SOURCE := kernel/samsung/kyletdcmcc
+TARGET_KERNEL_CONFIG := kyletd-vlx_defconfig
+BOARD_USES_UNCOMPRESSED_BOOT := true
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
 BOARD_KERNEL_IMAGE_NAME := Image
 
 # Partitions
@@ -61,13 +63,13 @@ TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 
 # Recovery
-DEVICE_RESOLUTION := 240x320
+DEVICE_RESOLUTION := 480*800
 BOARD_LDPI_RECOVERY := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_USE_CUSTOM_RECOVERY_FONT := "<font_7x16.h>"
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/sprd-common/recovery/recovery_keys.c
 BOARD_HAS_NO_MISC_PARTITION := true
-TARGET_RECOVERY_FSTAB := device/samsung/mint2g/recovery.fstab
+TARGET_RECOVERY_FSTAB := device/samsung/kyletdcmcc/recovery.fstab
 BOARD_SUPPRESS_EMMC_WIPE := true
 TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
 
@@ -85,7 +87,7 @@ CAMERA_SUPPORT_SIZE := 2M
 TARGET_BOARD_NO_FRONT_SENSOR := true
 
 # Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/mint2g/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/kyletdcmcc/bluetooth
 
 
 # Connectivity - Wi-Fi
@@ -112,18 +114,18 @@ BOARD_HAVE_SAMSUNG_WIFI          := true
 COMMON_GLOBAL_CFLAGS += -DMR0_AUDIO_BLOB
 
 # RIL
-BOARD_RIL_CLASS += ../../../device/samsung/mint2g/ril/
+#BOARD_RIL_CLASS += ../../../device/samsung/kyletdcmcc/ril/
 
 # Boot animation
-TARGET_SCREEN_HEIGHT := 320
-TARGET_SCREEN_WIDTH := 240
+TARGET_SCREEN_HEIGHT := 800
+TARGET_SCREEN_WIDTH := 480
 
 # Host specific
-PRODUCT_PREBUILT_WEBVIEWCHROMIUM := yes
+#PRODUCT_PREBUILT_WEBVIEWCHROMIUM := yes
 
 
 #twrp
-DEVICE_RESOLUTION := 240x240
+DEVICE_RESOLUTION := 800*480
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 RECOVERY_SDCARD_ON_DATA := true
 BOARD_HAS_NO_REAL_SDCARD := true

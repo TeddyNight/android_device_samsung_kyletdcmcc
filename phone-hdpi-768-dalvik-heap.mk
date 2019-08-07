@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2013 The Android Open Source Project
+# Copyright (C) 2010 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,5 +14,13 @@
 # limitations under the License.
 #
 
-PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/full_kyletdcmcc.mk
+# Provides overrides to configure the Dalvik heap for a standard high density
+# phone with around 768MB total RAM.
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.heapstartsize=5m \
+    dalvik.vm.heapgrowthlimit=64m \
+    dalvik.vm.heapsize=128m \
+    dalvik.vm.heaptargetutilization=0.25 \
+    dalvik.vm.heapminfree=512k \
+    dalvik.vm.heapmaxfree=2m

@@ -17,5 +17,5 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="kyletdcmccxx-user 4.1.2 JZO54K S5282XXANF3 release-keys"
     
 
-PRODUCT_NAME := lineage_kyletdcmcc
+PRODUCT_NAME := cm_kyletdcmcc
 PRODUCT_DEVICE := kyletdcmcc

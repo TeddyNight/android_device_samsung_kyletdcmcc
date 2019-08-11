@@ -1,2 +1,2 @@
-add_lunch_combo lineage_kyletdcmcc-eng
-add_lunch_combo lineage_kyletdcmcc-userdebug
+add_lunch_combo cm_kyletdcmcc-eng
+add_lunch_combo cm_kyletdcmcc-userdebug
